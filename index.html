@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>JUST PME Portal — Dept. of Petroleum &amp; Mining Engineering</title>
+  <meta name="description" content="Unified departmental academic portal for Petroleum & Mining Engineering (PME) at Jashore University of Science & Technology (JUST). Access semester-wise books, lecture sheets, past final papers, field expedition galleries, and course video labs." />
+  <meta name="theme-color" content="#F8FAFC" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JUST PME Portal — Dept. of Petroleum & Mining Engineering" />
+  <meta property="og:description" content="Our Passion Is What Fuels Our Hunger For Knowledge! Academic vault, field expedition gallery, and video labs for JUST PME & SPE Chapter 6291." />
+  <meta property="og:image" content="JUST_logo.jpg" />
+
+  <!-- Inline SVG Crest Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230369A1'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23F59E0B' stroke-width='3'/%3E%3Ctext x='32' y='38' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='18' fill='%23FFFFFF'%3EPME%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slatebg: '#F8FAFC',
+            ink: '#0F172A',
+            ocean: '#0369A1',
+            amberpme: '#D97706',
+            emeraldjust: '#059669',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --accent-ocean: #0369A1;
+      --accent-amber: #D97706;
+      --accent-emerald: #059669;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Light Topographic / Strata Grid */
+    .strata-pattern {
+      background-color: #F8FAFC;
+      background-image:
+        radial-gradient(at 15% 15%, rgba(3, 105, 161, 0.06) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, rgba(217, 119, 6, 0.06) 0px, transparent 50%),
+        radial-gradient(at 50% 90%, rgba(5, 150, 105, 0.05) 0px, transparent 50%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+    }
+
+    /* Custom Scrollbar for Horizontal Docks & Tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Creative JUST Crest Ring */
+    .crest-ring {
+      background: conic-gradient(from 140deg, #0369A1, #059669, #D97706, #DC2626, #0369A1);
+      padding: 2.5px;
+    }
+
+    /* Smooth Card Hover Elevation */
+    .pme-card {
+      transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .pme-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px -10px rgba(15, 23, 42, 0.09);
+      border-color: rgba(3, 105, 161, 0.32);
+    }
+
+    /* Carousel Fade */
+    .carousel-slide {
+      transition: opacity 0.45s ease-in-out;
+    }
+  </style>
+</head>
+<body class="strata-pattern min-h-screen flex flex-col selection:bg-sky-100 selection:text-sky-900">
+
+  <!-- Top Announcement Banner -->
+  <div class="bg-gradient-to-r from-sky-800 via-sky-700 to-emerald-700 text-white text-xs sm:text-sm py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-300 animate-pulse"></span>
+        <span>For site feedback, broken resource links, and troubleshooting please fill up this form</span>
+      </div>
+      <a href="https://forms.gle/vXRELJM4wTeZEa1S7" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-1 bg-white/15 hover:bg-white/25 text-white font-semibold px-3 py-0.5 rounded-full transition text-xs border border-white/25">
+        Apply <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-3">
+      <!-- Brand + Creative JUST Logo Medallion -->
+      <a href="#home" class="flex items-center gap-3 group shrink-0">
+        <div class="relative flex items-center">
+          <div class="crest-ring rounded-full shadow-sm group-hover:scale-105 transition-transform">
+            <div class="bg-white rounded-full p-0.5 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center overflow-hidden">
+              <img src="JUST_logo.jpg" alt="Jashore University of Science and Technology Crest"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%230369A1%27/%3E%3Ctext x=%2732%27 y=%2737%27 text-anchor=%27middle%27 font-family=%27sans-serif%27 font-weight=%27800%27 font-size=%2716%27 fill=%27%23FFF%27%3EJUST%3C/text%3E%3C/svg%3E';"
+                   class="w-full h-full object-contain rounded-full" />
+            </div>
+          </div>
+          <span class="hidden xs:inline-flex -ml-2 mt-6 px-1.5 py-0.5 rounded-md bg-amber-500 text-white font-mono text-[10px] font-bold shadow-xs border border-white">
+            PME
+          </span>
+        </div>
+        <div>
+          <div class="font-display font-extrabold text-slate-900 text-base sm:text-lg leading-tight tracking-tight flex items-center gap-1.5">
+            <span>JUST PME Portal</span>
+            <span class="hidden md:inline-block text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200">v2.6</span>
+          </div>
+          <div class="text-[11px] sm:text-xs text-slate-500 font-medium leading-tight">
+            Dept. of Petroleum &amp; Mining Engineering
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation" class="hidden lg:flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl border border-slate-200/70">
+        <a href="#home" class="px-3.5 py-1.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-white transition">Home</a>
+        <a href="#library" class="px-3.5 py-1.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-white transition">Digital Library</a>
+        <a href="#gallery" class="px-3.5 py-1.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-white transition">Gallery</a>
+        <a href="#gis-lab" class="px-3.5 py-1.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-white transition">Video Tutorials</a>
+        <a href="#connect" class="px-3.5 py-1.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-white transition">SPE &amp; Connect</a>
+      </nav>
+
+      <!-- Quick Search Trigger & Mobile Menu Button -->
+      <div class="flex items-center gap-2">
+        <button id="headerSearchBtn" type="button"
+                class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-sky-50 text-slate-600 hover:text-sky-800 border border-slate-200/90 text-xs sm:text-sm font-medium transition cursor-pointer"
+                title="Jump to Digital Library Search (Press /)">
+          <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span class="hidden sm:inline">Search Vault...</span>
+          <kbd class="hidden md:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-white text-slate-500 rounded border border-slate-200">/</kbd>
+        </button>
+
+        <button id="mobileMenuBtn" type="button" aria-label="Toggle Menu"
+                class="lg:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200/70 text-slate-700 border border-slate-200 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 py-3 space-y-1.5 shadow-lg">
+      <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700">Home</a>
+      <a href="#library" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700">Digital Library &amp; Study Vault</a>
+      <a href="#gallery" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700">Expedition Photo Gallery</a>
+      <a href="#gis-lab" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700">GIS &amp; EEE Video Tutorials</a>
+      <a href="#connect" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700">SPE Chapter 6291 &amp; Connect</a>
+    </div>
+  </header>
+
+  <!-- Persistent Quick-Access Dock -->
+  <div class="bg-white/95 border-b border-slate-200/80 py-2 px-4">
+    <div class="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto no-scrollbar">
+      <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200/80 px-2.5 py-1 rounded-lg shrink-0">
+        <span>★</span> Quick-Access Dock:
+      </span>
+      <div id="quickDockItems" class="flex items-center gap-2 shrink-0">
+        <!-- Populated dynamically via JS + localStorage -->
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1">
+
+    <!-- HERO & SHOWCASE SECTION -->
+    <section id="home" class="relative pt-8 pb-14 sm:pt-12 sm:pb-20 overflow-hidden">
+      <!-- Subtle Watermark Crest -->
+      <img src="JUST_logo.jpg" alt="" aria-hidden="true"
+           onerror="this.style.display='none'"
+           class="pointer-events-none select-none hidden xl:block absolute -right-16 top-6 w-96 h-96 object-contain opacity-[0.045]" />
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+
+          <!-- Left Column: Academic Pitch & Metrics -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-xs">
+              <img src="JUST_logo.jpg" alt="JUST Crest" onerror="this.style.display='none'" class="w-5 h-5 object-contain rounded-full" />
+              <span class="text-xs font-semibold text-slate-700">Jashore University of Science &amp; Technology · <span class="text-sky-700 font-bold">SPE Chapter 6291</span></span>
+            </div>
+
+            <div class="space-y-3">
+              <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.65rem] text-slate-900 leading-[1.15] tracking-tight">
+                “The next gen engineering students of <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-700 via-emerald-600 to-amber-600">JUST</span> here to make a difference”
+              </h1>
+              <p class="text-base sm:text-lg font-bold text-amber-700 flex items-center gap-2">
+                <span class="w-6 h-0.5 bg-amber-500 rounded-full"></span>
+                Our Passion Is What Fuels Our Hunger For Knowledge!
+              </p>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                Unified departmental academic portal for Petroleum &amp; Mining Engineering (PME) at JUST. Access semester-wise textbooks, lecture sheets, past final papers, syllabi, reservoir &amp; GIS software, field expedition photo archives, and course video tutorials in one click.
+              </p>
+            </div>
+
+            <!-- Primary CTA Buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a href="#library"
+                 class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-sky-700 hover:bg-sky-800 text-white font-semibold text-sm shadow-sm shadow-sky-700/20 transition">
+                <span>Explore Digital Library</span>
+                <span aria-hidden="true">↓</span>
+              </a>
+              <a href="#gis-lab"
+                 class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-300 shadow-xs transition">
+                <span>▶ Watch Video Tutorials</span>
+              </a>
+              <a href="#gallery"
+                 class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-amber-50 hover:bg-amber-100/80 text-amber-900 font-semibold text-sm border border-amber-200 transition">
+                <span>View Photo Gallery</span>
+              </a>
+            </div>
+
+            <!-- 4-Card Stats Strip -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div class="bg-white rounded-2xl p-3.5 border border-slate-200/90 shadow-xs">
+                <div class="font-display font-extrabold text-2xl text-sky-700">8</div>
+                <div class="text-xs font-medium text-slate-500 mt-0.5">Academic Semesters</div>
+              </div>
+              <div class="bg-white rounded-2xl p-3.5 border border-slate-200/90 shadow-xs">
+                <div class="font-display font-extrabold text-2xl text-amber-600">36+</div>
+                <div class="text-xs font-medium text-slate-500 mt-0.5">Direct Drive Vaults</div>
+              </div>
+              <div class="bg-white rounded-2xl p-3.5 border border-slate-200/90 shadow-xs">
+                <div class="font-display font-extrabold text-2xl text-emerald-600">8</div>
+                <div class="text-xs font-medium text-slate-500 mt-0.5">Course Video Labs</div>
+              </div>
+              <div class="bg-white rounded-2xl p-3.5 border border-slate-200/90 shadow-xs">
+                <div class="font-display font-extrabold text-2xl text-slate-900">6291</div>
+                <div class="text-xs font-medium text-slate-500 mt-0.5">JUST SPE Chapter</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Departmental Showcase Carousel -->
+          <div class="lg:col-span-6">
+            <div class="bg-white rounded-3xl p-3 sm:p-4 border border-slate-200/90 shadow-lg shadow-slate-200/60">
+              <div class="relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] sm:aspect-[16/11]" id="heroCarousel">
+                <!-- Slides injected by JS -->
+                <div id="carouselSlidesContainer" class="w-full h-full relative"></div>
+
+                <!-- Prev / Next Controls -->
+                <button id="prevSlideBtn" type="button" aria-label="Previous Slide"
+                        class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md flex items-center justify-center transition cursor-pointer">
+                  ‹
+                </button>
+                <button id="nextSlideBtn" type="button" aria-label="Next Slide"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md flex items-center justify-center transition cursor-pointer">
+                  ›
+                </button>
+              </div>
+
+              <!-- Carousel Caption & Dots Footer -->
+              <div class="pt-3.5 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div id="carouselCaptionBox" class="space-y-0.5">
+                  <!-- Dynamic caption -->
+                </div>
+                <div id="carouselDots" class="flex items-center gap-1.5 shrink-0">
+                  <!-- Dynamic dots -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE ECOSYSTEM PILLARS -->
+    <section class="py-12 sm:py-16 bg-white border-y border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+          <div>
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200 px-2.5 py-1 rounded-md">Core Ecosystem</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 mt-2">Departmental Pillars &amp; Student Community</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 max-w-md">
+            Built by PME students for rapid semester exam prep, geological field documentation, and technical software mastery.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Pillar 1 -->
+          <article class="pme-card bg-slate-50/70 rounded-2xl overflow-hidden border border-slate-200/90 flex flex-col">
+            <div class="h-44 overflow-hidden bg-slate-200 relative">
+              <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80"
+                   alt="PME Digital Library" loading="lazy"
+                   class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-white/95 text-sky-800 font-mono text-xs font-bold shadow-xs">
+                SEM 1.1 – 4.2
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <h3 class="font-display font-bold text-lg text-slate-900">Digital Library &amp; Study Vault</h3>
+                <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+                  Our vast digital library of semester-wise books, lecture sheets, syllabi, and final question banks to power your journey in Petroleum &amp; Mining Engineering.
+                </p>
+              </div>
+              <a href="#library" class="inline-flex items-center gap-1.5 text-sm font-bold text-sky-700 hover:text-sky-900">
+                Open 1-Click Drive Vault <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Pillar 2 -->
+          <article class="pme-card bg-slate-50/70 rounded-2xl overflow-hidden border border-slate-200/90 flex flex-col">
+            <div class="h-44 overflow-hidden bg-slate-200 relative">
+              <img src="IMG-20241201-WA0050.jpg"
+                   onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80';"
+                   alt="JUST PME Sessional Field Work" loading="lazy"
+                   class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-white/95 text-amber-800 font-mono text-xs font-bold shadow-xs">
+                FIELD EXPEDITIONS
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <h3 class="font-display font-bold text-lg text-slate-900">Geological &amp; Mining Field Tours</h3>
+                <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+                  Hands-on geological mapping across Cox’s Bazar, Himchari, Inani, Barapukuria Coal Mine, and Maddhyapara Granite Mine documented by PME batches.
+                </p>
+              </div>
+              <a href="#gallery" class="inline-flex items-center gap-1.5 text-sm font-bold text-amber-700 hover:text-amber-900">
+                Explore Field Archive <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Pillar 3 -->
+          <article class="pme-card bg-slate-50/70 rounded-2xl overflow-hidden border border-slate-200/90 flex flex-col">
+            <div class="h-44 overflow-hidden bg-slate-200 relative">
+              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80"
+                   alt="GIS and EEE Video Tutorials" loading="lazy"
+                   class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-white/95 text-emerald-800 font-mono text-xs font-bold shadow-xs">
+                GIS &amp; EEE LABS
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <h3 class="font-display font-bold text-lg text-slate-900">Course Video Labs &amp; Batch Drives</h3>
+                <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+                  Curated GIS mapping tutorials, EEE Course 2.1 lab walkthroughs, and direct shared Drive repositories for Shihoron 20 and Ekattho 21.
+                </p>
+              </div>
+              <a href="#gis-lab" class="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-900">
+                Launch Video Studio <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIGITAL LIBRARY & STUDY VAULT -->
+    <section id="library" class="py-14 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section Header + Batch Shared Drives -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+          <div>
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200 px-2.5 py-1 rounded-md">
+              1-Click Academic Repository
+            </span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 mt-2">
+              Digital Library &amp; Study Vault
+            </h2>
+            <p class="text-sm text-slate-600 mt-1 max-w-2xl">
+              Filter by semester or resource type, search any course title or code, and star (<span class="text-amber-500 font-bold">★</span>) high-priority folders to pin them to your Quick-Access Dock.
+            </p>
+          </div>
+
+          <!-- Dedicated Batch Cloud Folders (From LINKS.docx) -->
+          <div class="flex flex-wrap items-center gap-2.5">
+            <a href="https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-sky-50 text-slate-800 hover:text-sky-800 border border-slate-200 shadow-xs text-xs sm:text-sm font-semibold transition">
+              <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+              <span>Shihoron 20 Drive</span>
+              <span class="text-slate-400">↗</span>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-amber-50 text-slate-800 hover:text-amber-800 border border-slate-200 shadow-xs text-xs sm:text-sm font-semibold transition">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span>Ekattho 21 Drive</span>
+              <span class="text-slate-400">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Search & Filter Controls Card -->
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-xs space-y-4 mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <!-- Search Input -->
+            <div class="md:col-span-7 relative">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input id="vaultSearchInput" type="search"
+                     placeholder="Search course code, reservoir, drilling, mineralogy, GIS, EEE, past questions..."
+                     class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/30 focus:border-sky-600 transition" />
+            </div>
+
+            <!-- Category Pills -->
+            <div id="categoryFilterBar" class="md:col-span-5 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Semester Tabs -->
+          <div class="flex items-center justify-between gap-3 pt-2 border-t border-slate-100">
+            <div id="semesterFilterBar" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+              <!-- Populated by JS -->
+            </div>
+            <div id="vaultResultCount" class="hidden sm:block text-xs font-mono text-slate-500 shrink-0">
+              Showing 36 vaults
+            </div>
+          </div>
+        </div>
+
+        <!-- Vault Cards Grid -->
+        <div id="vaultGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="vaultEmptyState" class="hidden bg-white rounded-2xl p-10 text-center border border-slate-200">
+          <p class="font-display font-bold text-slate-800 text-lg">No matching study vaults found</p>
+          <p class="text-sm text-slate-500 mt-1">Try clearing your search filter or switching to “All Semesters”.</p>
+          <button id="resetFiltersBtn" type="button"
+                  class="mt-4 px-4 py-2 rounded-xl bg-sky-700 text-white text-xs font-semibold hover:bg-sky-800 transition cursor-pointer">
+            Reset All Filters
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPEDITION PHOTO GALLERY -->
+    <section id="gallery" class="py-14 sm:py-20 bg-white border-y border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">
+              Field Archive &amp; Batch Life
+            </span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 mt-2">
+              Expedition &amp; Departmental Photo Gallery
+            </h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Click any photograph to open high-resolution inspection mode.
+            </p>
+          </div>
+
+          <!-- Gallery Filter Pills -->
+          <div id="galleryFilterBar" class="flex flex-wrap items-center gap-2">
+            <button type="button" data-gal-filter="all" class="gal-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-sky-700 text-white transition cursor-pointer">All Photos</button>
+            <button type="button" data-gal-filter="ekattho" class="gal-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">Ekattho 21</button>
+            <button type="button" data-gal-filter="tour11" class="gal-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">Field Tour 1.1</button>
+            <button type="button" data-gal-filter="tour21" class="gal-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">Field Tour 2.1</button>
+          </div>
+        </div>
+
+        <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO TUTORIALS & GIS / EEE LAB STUDIO -->
+    <section id="gis-lab" class="py-14 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-md">
+              Interactive Course Studio
+            </span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 mt-2">
+              GIS &amp; EEE Course 2.1 Video Tutorials
+            </h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Select any lab module below to play directly inside the portal or open on YouTube in a new tab.
+            </p>
+          </div>
+
+          <!-- Track Switcher -->
+          <div class="flex items-center gap-2 bg-white p-1.5 rounded-xl border border-slate-200 shadow-xs self-start">
+            <button type="button" data-video-track="all" class="vid-track-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-700 text-white transition cursor-pointer">All (8)</button>
+            <button type="button" data-video-track="GIS" class="vid-track-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-100 transition cursor-pointer">GIS Videos (4)</button>
+            <button type="button" data-video-track="EEE 2.1" class="vid-track-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-100 transition cursor-pointer">EEE Course 2.1 (4)</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <!-- Main Video Stage -->
+          <div class="lg:col-span-7 bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/90 shadow-sm">
+            <div class="relative rounded-2xl overflow-hidden bg-slate-900 aspect-video shadow-inner">
+              <iframe id="mainVideoIframe"
+                      class="w-full h-full border-0"
+                      src="https://www.youtube.com/embed/dTS9lqGaGVk?rel=0"
+                      title="PME Course Video Tutorial Player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="activeVideoBadge" class="px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-xs font-bold">
+                    GIS VIDEOS
+                  </span>
+                  <span id="activeVideoCode" class="text-xs font-mono text-slate-400">Module 01</span>
+                </div>
+                <h3 id="activeVideoTitle" class="font-display font-bold text-lg sm:text-xl text-slate-900 mt-1">
+                  GIS Lab — Video 1: Spatial Data &amp; Mapping Fundamentals
+                </h3>
+              </div>
+
+              <a id="activeVideoExternalLink"
+                 href="https://youtu.be/dTS9lqGaGVk"
+                 target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-semibold shadow-xs transition shrink-0">
+                <span>Watch on YouTube</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Playlist Selector -->
+          <div class="lg:col-span-5 bg-white rounded-3xl p-4 border border-slate-200/90 shadow-sm">
+            <div class="flex items-center justify-between px-1 pb-3 border-b border-slate-100">
+              <span class="font-display font-bold text-sm text-slate-800">Course Lab Playlist</span>
+              <span class="text-xs font-mono text-slate-400">Click to load</span>
+            </div>
+            <div id="videoPlaylistContainer" class="mt-3 space-y-2 max-h-[430px] overflow-y-auto pr-1">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPE CHAPTER 6291 & CONNECT -->
+    <section id="connect" class="py-14 sm:py-20 bg-white border-t border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-sky-50 via-white to-amber-50/70 rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+            <div class="lg:col-span-7 space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100/80 text-sky-800 font-mono text-xs font-bold">
+                <span>SOCIETY OF PETROLEUM ENGINEERS</span>
+                <span>·</span>
+                <span>CHAPTER #6291</span>
+              </div>
+              <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">
+                JUST SPE Student Chapter &amp; Departmental Network
+              </h2>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                Connecting Petroleum &amp; Mining Engineering undergraduates at Jashore University of Science and Technology with global energy research, technical workshops, industry field tours, and peer academic mentorship.
+              </p>
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <button id="openQrModalBtn" type="button"
+                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-700 hover:bg-sky-800 text-white text-sm font-semibold shadow-xs transition cursor-pointer">
+                  <span>Share Portal QR Pass</span>
+                </button>
+                <a href="https://forms.gle/vXRELJM4wTeZEa1S7" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 text-sm font-semibold border border-slate-300 transition">
+                  <span>Submit Resource / Feedback ↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Digital ID / SPE Chapter Crest Card -->
+            <div class="lg:col-span-5">
+              <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-md relative overflow-hidden">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                  <div class="flex items-center gap-3">
+                    <div class="crest-ring rounded-full">
+                      <img src="JUST_logo.jpg" alt="JUST Crest"
+                           onerror="this.style.display='none'"
+                           class="w-12 h-12 rounded-full bg-white p-0.5 object-contain" />
+                    </div>
+                    <div>
+                      <div class="text-xs font-mono font-bold text-sky-700">OFFICIAL STUDENT CHAPTER</div>
+                      <div class="font-display font-extrabold text-slate-900 text-base">JUST SPE Chapter #6291</div>
+                      <div class="text-xs text-slate-500">Jashore-7408, Bangladesh</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pt-4 text-xs">
+                  <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    <div class="text-slate-400 font-mono">DEPARTMENT</div>
+                    <div class="font-bold text-slate-800 mt-0.5">Petroleum &amp; Mining Eng.</div>
+                  </div>
+                  <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    <div class="text-slate-400 font-mono">ACTIVE BATCHES</div>
+                    <div class="font-bold text-slate-800 mt-0.5">Shihoron 20 · Ekattho 21</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="JUST_logo.jpg" alt="JUST Logo" onerror="this.style.display='none'" class="w-8 h-8 object-contain rounded-full" />
+        <div class="text-xs sm:text-sm text-slate-600">
+          <span class="font-bold text-slate-900">Dept. of Petroleum &amp; Mining Engineering</span> · Jashore University of Science &amp; Technology
+        </div>
+      </div>
+      <div class="text-xs text-slate-500 font-mono">
+        SPE Chapter 6291 · Built for JUST PME Students
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL FOR GALLERY PHOTOS -->
+  <div id="lightboxModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-slate-200 animate-fadeIn">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-100">
+        <div>
+          <span id="lightboxTag" class="text-[11px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-sky-50 text-sky-700"></span>
+          <h3 id="lightboxTitle" class="font-display font-bold text-slate-900 text-base sm:text-lg mt-0.5"></h3>
+        </div>
+        <button id="closeLightboxBtn" type="button" aria-label="Close Lightbox"
+                class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer">
+          ✕
+        </button>
+      </div>
+      <div class="bg-slate-100 max-h-[72vh] flex items-center justify-center overflow-hidden">
+        <img id="lightboxImg" src="" alt="" class="max-h-[72vh] w-auto object-contain" />
+      </div>
+      <div class="px-5 py-3 bg-slate-50 text-xs sm:text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
+        <p id="lightboxDesc"></p>
+        <span class="font-mono text-xs text-slate-400">JUST PME Archive</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR SHARE MODAL -->
+  <div id="qrModal" class="hidden fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-mono font-bold text-sky-700 uppercase">SPE Chapter #6291</span>
+        <button id="closeQrModalBtn" type="button" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold cursor-pointer">✕</button>
+      </div>
+      <h3 class="font-display font-extrabold text-xl text-slate-900">Share JUST PME Portal</h3>
+      <p class="text-xs text-slate-500">Scan with any phone camera to open the departmental study vault on mobile.</p>
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 inline-block mx-auto">
+        <img id="qrCodeImg" src="" alt="Portal QR Code" class="w-44 h-44 mx-auto rounded-lg" />
+      </div>
+      <div class="pt-1">
+        <button id="copyPortalUrlBtn" type="button"
+                class="w-full py-2.5 px-4 rounded-xl bg-sky-700 hover:bg-sky-800 text-white text-xs font-semibold transition cursor-pointer">
+          Copy Portal Link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-xl shadow-lg">
+    Copied to clipboard!
+  </div>
+
+  <!-- APPLICATION SCRIPT -->
+  <script>
+    // 1. HERO SHOWCASE CAROUSEL DATA (Using user-provided photos in exact requested order)
+    const carouselSlides = [
+      {
+        image: 'photo_2026-11-16_22-58-28.jpg',
+        fallback: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80',
+        badge: 'BATCH SPOTLIGHT · EKATTHO 21',
+        badgeColor: 'bg-amber-500 text-white',
+        title: 'Ekattho 21 — Departmental Brotherhood & Campus Spirit',
+        subtitle: 'Unified Drive vault, lecture notes, and batch moments of PME Ekattho 21.',
+        ctaLabel: 'Open Ekattho 21 Drive ↗',
+        ctaHref: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing'
+      },
+      {
+        image: 'IMG-20241201-WA0050.jpg',
+        fallback: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+        badge: 'FIELD TOUR 1.1 · SESSION 2022-23',
+        badgeColor: 'bg-sky-700 text-white',
+        title: 'Sessional Field Work 2024 — Cox’s Bazar & Inani Coast',
+        subtitle: 'Beach Sand Minerals Exploitation Center, Himchari Hills & coastal geological sections.',
+        ctaLabel: 'Explore Field Gallery ↓',
+        ctaHref: '#gallery'
+      },
+      {
+        image: 'IMG-20250924-WA0013.jpg',
+        fallback: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80',
+        badge: 'FIELD TOUR 2.1 · SESSION 2022-23',
+        badgeColor: 'bg-emerald-700 text-white',
+        title: 'Sessional Field Tour 2025 — Barapukuria & Maddhyapara',
+        subtitle: 'Subsurface coal mining, hard-rock granite operations & BCSIR Joypurhat field study.',
+        ctaLabel: 'View Tour Archive ↓',
+        ctaHref: '#gallery'
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80',
+        fallback: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=80',
+        badge: 'BATCH ARCHIVE · SHIHORON 20',
+        badgeColor: 'bg-slate-800 text-white',
+        title: 'Shihoron 20 & Departmental Course Video Studio',
+        subtitle: 'Direct cloud repositories plus 8 hands-on GIS & EEE Course 2.1 video tutorials.',
+        ctaLabel: 'Open Shihoron 20 Drive ↗',
+        ctaHref: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing'
+      }
+    ];
+
+    // 2. DIGITAL LIBRARY & STUDY VAULT DATA (36+ Curated PME Resources)
+    const vaultResources = [
+      { id: 'v01', sem: '1.1', cat: 'Books', code: 'PME-1101', title: 'Introduction to Petroleum & Mining Engineering', desc: 'Core foundational textbooks, industry overview slides, and semester syllabus.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: true },
+      { id: 'v02', sem: '1.1', cat: 'Notes', code: 'GEOL-1103', title: 'Physical & Structural Geology Lecture Sheets', desc: 'Mineral identification charts, rock cycle notes, and Cox’s Bazar field prep.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: false },
+      { id: 'v03', sem: '1.1', cat: 'Questions', code: 'CHEM-1105', title: 'Engineering Chemistry & Physics Past Papers', desc: 'Solved semester final question banks and lab viva sheets.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v04', sem: '1.1', cat: 'Syllabus', code: 'PME-1100', title: '1st Year 1st Semester Complete Curriculum & Field Guide', desc: 'Credit distribution, lab rubrics, and Field Tour 1.1 reporting format.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: false },
+
+      { id: 'v05', sem: '1.2', cat: 'Books', code: 'PME-1201', title: 'Mineralogy, Crystallography & Petrology', desc: 'Optical mineralogy reference PDFs, thin-section guides, and lecture notes.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: false },
+      { id: 'v06', sem: '1.2', cat: 'Notes', code: 'MECH-1203', title: 'Engineering Mechanics & Fluid Statics', desc: 'Vector mechanics problem sets, hydrostatics derivations, and class notes.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v07', sem: '1.2', cat: 'Questions', code: 'MATH-1207', title: 'Differential Equations & Vector Calculus Vault', desc: 'Previous 5 years JUST semester final papers and worked solutions.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v08', sem: '1.2', cat: 'Software', code: 'CAD-1204', title: 'AutoCAD & Engineering Drawing Templates', desc: 'Geological cross-section CAD blocks and lab assignment sheets.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: false },
+
+      { id: 'v09', sem: '2.1', cat: 'Notes', code: 'EEE-2101', title: 'EEE Course 2.1 — Electrical Circuits & Machines', desc: 'Complete lecture sheets paired with the 4 EEE 2.1 YouTube video labs.', url: '#gis-lab', pinned: true },
+      { id: 'v10', sem: '2.1', cat: 'Books', code: 'PME-2103', title: 'Drilling Engineering I — Rotary Systems & Mud', desc: 'Bourgoyne Applied Drilling Engineering, mud rheology sheets, and bit hydraulics.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: false },
+      { id: 'v11', sem: '2.1', cat: 'Notes', code: 'PME-2105', title: 'Surface & Underground Mining Methods (Tour 2.1)', desc: 'Longwall coal mining & room-and-pillar granite notes for Barapukuria & Maddhyapara.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: false },
+      { id: 'v12', sem: '2.1', cat: 'Questions', code: 'PME-2100', title: 'Semester 2.1 Question Bank & Lab Reports', desc: 'Mid-term, semester final questions, and sessional field tour report samples.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+
+      { id: 'v13', sem: '2.2', cat: 'Books', code: 'PME-2201', title: 'Reservoir Rock & Fluid Properties (Petrophysics)', desc: 'Tiab & Donaldson Petrophysics, porosity-permeability core lab manuals.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v14', sem: '2.2', cat: 'Software', code: 'GIS-2204', title: 'GIS & Remote Sensing Spatial Mapping Lab Kit', desc: 'Shapefiles, DEM rasters, and ArcGIS/QGIS guides for the 4 GIS video modules.', url: '#gis-lab', pinned: true },
+      { id: 'v15', sem: '2.2', cat: 'Notes', code: 'PME-2205', title: 'Sedimentology & Stratigraphy of Bengal Basin', desc: 'Sylhet Trough, Surma Basin gas fields, and stratigraphic column charts.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: false },
+      { id: 'v16', sem: '2.2', cat: 'Questions', code: 'PME-2200', title: 'Semester 2.2 Past Final Questions & Viva Guide', desc: 'Compiled question bank across all 2.2 theoretical and sessional courses.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+
+      { id: 'v17', sem: '3.1', cat: 'Books', code: 'PME-3101', title: 'Reservoir Engineering I — Material Balance', desc: 'Tarek Ahmed Reservoir Engineering Handbook, drive mechanisms, and MBE sheets.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v18', sem: '3.1', cat: 'Notes', code: 'PME-3103', title: 'Well Logging & Formation Evaluation', desc: 'Schlumberger log interpretation charts, Gamma Ray, Resistivity & Neutron-Density.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v19', sem: '3.1', cat: 'Notes', code: 'PME-3105', title: 'Rock Mechanics & Mine Ground Control', desc: 'Stress-strain failure criteria, Mohr-Coulomb envelopes, and pillar design.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: false },
+      { id: 'v20', sem: '3.1', cat: 'Questions', code: 'PME-3100', title: 'Semester 3.1 Final Exam Archive', desc: 'Departmental question papers and numerical problem solutions.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+
+      { id: 'v21', sem: '3.2', cat: 'Books', code: 'PME-3201', title: 'Production Engineering & Nodal Analysis', desc: 'IPR/VLP curves, artificial lift systems, and well completion schematics.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v22', sem: '3.2', cat: 'Notes', code: 'PME-3203', title: 'Mine Ventilation & Environmental Safety', desc: 'Airflow network calculations, methane drainage, and mine safety standards.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v23', sem: '3.2', cat: 'Software', code: 'SIM-3206', title: 'Reservoir & Wellbore Simulation Lab Manuals', desc: 'Numerical simulation workflows, PVT modeling, and decline curve spreadsheets.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v24', sem: '3.2', cat: 'Questions', code: 'PME-3200', title: 'Semester 3.2 Question Bank & Lab Sheets', desc: 'Past questions for Production, Ventilation, and Geostatistics.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+
+      { id: 'v25', sem: '4.1', cat: 'Books', code: 'PME-4101', title: 'Enhanced Oil Recovery (EOR) & Well Testing', desc: 'Pressure transient analysis, Horner plots, miscible & thermal EOR methods.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v26', sem: '4.1', cat: 'Notes', code: 'PME-4103', title: 'Natural Gas Engineering & Pipeline Transport', desc: 'Gas processing, hydrate prevention, compressor stations, and Petrobangla grid.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v27', sem: '4.1', cat: 'Notes', code: 'PME-4105', title: 'Mineral Processing & Extractive Metallurgy', desc: 'Comminution, froth flotation, magnetic separation, and heavy mineral sands.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v28', sem: '4.1', cat: 'Questions', code: 'PME-4100', title: 'Semester 4.1 Final Question Archive', desc: 'Previous final exam papers and thesis proposal formatting guidelines.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+
+      { id: 'v29', sem: '4.2', cat: 'Books', code: 'PME-4201', title: 'Petroleum Economics, Risk & Reserve Estimation', desc: 'SPE-PRMS guidelines, discounted cash flow models, and Monte Carlo risk analysis.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v30', sem: '4.2', cat: 'Notes', code: 'PME-4203', title: 'Health, Safety, Environment (HSE) & Energy Transition', desc: 'Blowout prevention, carbon capture & storage (CCS), and geothermal systems.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v31', sem: '4.2', cat: 'Syllabus', code: 'PME-4200', title: 'Undergraduate Thesis & Industrial Attachment Kit', desc: 'LaTeX/Word thesis templates, seminar slides, and industrial attachment logbooks.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+      { id: 'v32', sem: '4.2', cat: 'Questions', code: 'PME-4299', title: 'Final Year Comprehensive Viva & Exam Bank', desc: 'Core PME technical interview questions for BAPEX, Petrobangla, BCMCL & MGMCL.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: false },
+
+      { id: 'v33', sem: 'All', cat: 'Syllabus', code: 'BATCH-20', title: 'Shihoron 20 Master Google Drive Repository', desc: 'Complete batch-maintained folder with all semester notes, books, and lab sheets.', url: 'https://drive.google.com/drive/folders/1Fy51ZJ7sklHq1W837j7qPol7y_cjOxG7?usp=sharing', pinned: true },
+      { id: 'v34', sem: 'All', cat: 'Syllabus', code: 'BATCH-21', title: 'Ekattho 21 Master Google Drive Repository', desc: 'Shared academic drive for Ekattho 21 containing slides, PDFs, and field materials.', url: 'https://drive.google.com/drive/folders/1pi_j34wFx4_Mj5pcGr17pJzOInDvvfZs?usp=sharing', pinned: true },
+      { id: 'v35', sem: 'All', cat: 'Software', code: 'GIS-ALL', title: 'GIS Video Tutorial Companion Files (Videos 1–4)', desc: 'Direct jump to the 4 interactive GIS course video tutorials.', url: '#gis-lab', pinned: false },
+      { id: 'v36', sem: 'All', cat: 'Software', code: 'EEE-21', title: 'EEE Course 2.1 Video Lab Series (Videos 1–4)', desc: 'Direct jump to the 4 interactive EEE 2.1 video tutorials.', url: '#gis-lab', pinned: false }
+    ];
+
+    // 3. GALLERY ITEMS (Featuring the 3 uploaded photographs prominently)
+    const galleryItems = [
+      {
+        id: 'g1',
+        category: 'ekattho',
+        tag: 'Ekattho 21',
+        title: 'Ekattho 21 Batch Gathering',
+        image: 'photo_2026-11-16_22-58-28.jpg',
+        fallback: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80',
+        desc: 'Students of PME Batch Ekattho 21 together during a campus celebration at Jashore University of Science & Technology.'
+      },
+      {
+        id: 'g2',
+        category: 'tour11',
+        tag: 'Field Tour 1.1',
+        title: 'Sessional Field Work 2024 — Cox’s Bazar & Inani',
+        image: 'IMG-20241201-WA0050.jpg',
+        fallback: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80',
+        desc: 'Session 2022–23 geological field work (30 Nov – 6 Dec 2024) covering Beach Sand Minerals Exploitation Center, Himchari Hills, and Inani Beach.'
+      },
+      {
+        id: 'g3',
+        category: 'tour21',
+        tag: 'Field Tour 2.1',
+        title: 'Sessional Field Tour 2025 — Barapukuria & Maddhyapara',
+        image: 'IMG-20250924-WA0013.jpg',
+        fallback: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80',
+        desc: 'Session 2022–23 mining & geological field tour (22 – 29 Sept 2025) visiting Barapukuria Coal Mining Co., Maddhyapara Granite Mine, and BCSIR.'
+      }
+    ];
+
+    // 4. VIDEO TUTORIALS DATA (Exact 8 YouTube links from LINKS.docx)
+    const videoModules = [
+      {
+        id: 'vid-gis-1',
+        track: 'GIS',
+        number: 'GIS 01',
+        title: 'GIS Videos — Video 1: Spatial Coordinate Systems & Basemaps',
+        youtubeId: 'dTS9lqGaGVk',
+        watchUrl: 'https://youtu.be/dTS9lqGaGVk',
+        duration: 'Lab Module 1'
+      },
+      {
+        id: 'vid-gis-2',
+        track: 'GIS',
+        number: 'GIS 02',
+        title: 'GIS Videos — Video 2: Vector Digitization & Attribute Tables',
+        youtubeId: 's0QR8AnGjyU',
+        watchUrl: 'https://youtu.be/s0QR8AnGjyU',
+        duration: 'Lab Module 2'
+      },
+      {
+        id: 'vid-gis-3',
+        track: 'GIS',
+        number: 'GIS 03',
+        title: 'GIS Videos — Video 3: Georeferencing Geological & Topographic Maps',
+        youtubeId: 'X1dLrfDARMU',
+        watchUrl: 'https://youtu.be/X1dLrfDARMU',
+        duration: 'Lab Module 3'
+      },
+      {
+        id: 'vid-gis-4',
+        track: 'GIS',
+        number: 'GIS 04',
+        title: 'GIS Videos — Video 4: DEM Terrain Analysis & Thematic Layout Export',
+        youtubeId: 'xHyZX-DTcY0',
+        watchUrl: 'https://youtu.be/xHyZX-DTcY0',
+        duration: 'Lab Module 4'
+      },
+      {
+        id: 'vid-eee-1',
+        track: 'EEE 2.1',
+        number: 'EEE 01',
+        title: 'EEE Course 2.1 — Video 1: DC Circuit Theorems & Network Analysis',
+        youtubeId: 'L3Ek2eG4Y1Y',
+        watchUrl: 'https://youtu.be/L3Ek2eG4Y1Y',
+        duration: 'Course 2.1 · Pt 1'
+      },
+      {
+        id: 'vid-eee-2',
+        track: 'EEE 2.1',
+        number: 'EEE 02',
+        title: 'EEE Course 2.1 — Video 2: AC Phasors, Impedance & Power Factor',
+        youtubeId: 'DZ4GGVsETg8',
+        watchUrl: 'https://youtu.be/DZ4GGVsETg8',
+        duration: 'Course 2.1 · Pt 2'
+      },
+      {
+        id: 'vid-eee-3',
+        track: 'EEE 2.1',
+        number: 'EEE 03',
+        title: 'EEE Course 2.1 — Video 3: Three-Phase Systems & Transformers',
+        youtubeId: '8l9wlFXWNKA',
+        watchUrl: 'https://youtu.be/8l9wlFXWNKA',
+        duration: 'Course 2.1 · Pt 3'
+      },
+      {
+        id: 'vid-eee-4',
+        track: 'EEE 2.1',
+        number: 'EEE 04',
+        title: 'EEE Course 2.1 — Video 4: Induction Motors & Industrial Drive Basics',
+        youtubeId: 'PpYqNONPzxs',
+        watchUrl: 'https://youtu.be/PpYqNONPzxs',
+        duration: 'Course 2.1 · Pt 4'
+      }
+    ];
+
+    // STATE
+    let currentSlide = 0;
+    let carouselTimer = null;
+    let selectedSemester = 'All';
+    let selectedCategory = 'All';
+    let searchQuery = '';
+    let selectedGalleryFilter = 'all';
+    let selectedVideoTrack = 'all';
+    let activeVideoId = videoModules[0].id;
+
+    // Pinned IDs stored in localStorage
+    const STORAGE_KEY = 'just_pme_pinned_vaults_v2';
+    let pinnedIds = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+    if (!Array.isArray(pinnedIds)) {
+      pinnedIds = vaultResources.filter(v => v.pinned).map(v => v.id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(pinnedIds));
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBanner');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      clearTimeout(toast._t);
+      toast._t = setTimeout(() => toast.classList.add('hidden'), 2400);
+    }
+
+    // --- CAROUSEL LOGIC ---
+    function renderCarousel() {
+      const container = document.getElementById('carouselSlidesContainer');
+      const captionBox = document.getElementById('carouselCaptionBox');
+      const dotsBox = document.getElementById('carouselDots');
+
+      const slide = carouselSlides[currentSlide];
+      container.innerHTML = `
+        <img src="${slide.image}"
+             onerror="this.onerror=null;this.src='${slide.fallback}';"
+             alt="${slide.title}"
+             class="w-full h-full object-cover carousel-slide" />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/10 to-transparent"></div>
+        <div class="absolute top-3.5 left-3.5">
+          <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wide shadow-sm ${slide.badgeColor}">
+            ${slide.badge}
+          </span>
+        </div>
+        <div class="absolute bottom-3.5 right-3.5">
+          <a href="${slide.ctaHref}" ${slide.ctaHref.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}
+             class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/95 hover:bg-white text-slate-900 font-semibold text-xs shadow-md transition">
+            ${slide.ctaLabel}
+          </a>
+        </div>
+      `;
+
+      captionBox.innerHTML = `
+        <div class="font-display font-bold text-slate-900 text-sm sm:text-base leading-snug">${slide.title}</div>
+        <div class="text-xs text-slate-500 line-clamp-1">${slide.subtitle}</div>
+      `;
+
+      dotsBox.innerHTML = carouselSlides.map((_, idx) => `
+        <button type="button" aria-label="Go to slide ${idx + 1}" onclick="goToSlide(${idx})"
+                class="h-2 rounded-full transition-all cursor-pointer ${idx === currentSlide ? 'w-6 bg-sky-700' : 'w-2 bg-slate-300 hover:bg-slate-400'}">
+        </button>
+      `).join('');
+    }
+
+    function goToSlide(index) {
+      currentSlide = (index + carouselSlides.length) % carouselSlides.length;
+      renderCarousel();
+      resetCarouselAutoplay();
+    }
+
+    function resetCarouselAutoplay() {
+      clearInterval(carouselTimer);
+      carouselTimer = setInterval(() => {
+        currentSlide = (currentSlide + 1) % carouselSlides.length;
+        renderCarousel();
+      }, 5500);
+    }
+
+    // --- QUICK-ACCESS DOCK ---
+    function renderQuickDock() {
+      const dock = document.getElementById('quickDockItems');
+      const pinnedItems = vaultResources.filter(v => pinnedIds.includes(v.id));
+
+      if (pinnedItems.length === 0) {
+        dock.innerHTML = `<span class="text-xs text-slate-400 italic">Click ★ on any vault card below to pin shortcuts here.</span>`;
+        return;
+      }
+
+      dock.innerHTML = pinnedItems.map(item => `
+        <a href="${item.url}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}
+           class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-sky-50 text-slate-700 hover:text-sky-800 border border-slate-200/80 text-xs font-medium transition">
+          <span class="font-mono font-bold text-sky-700">${item.code}</span>
+          <span class="max-w-[150px] truncate">${item.title}</span>
+        </a>
+      `).join('');
+    }
+
+    function togglePin(id) {
+      if (pinnedIds.includes(id)) {
+        pinnedIds = pinnedIds.filter(item => item !== id);
+        showToast('Removed from Quick-Access Dock');
+      } else {
+        pinnedIds.push(id);
+        showToast('Pinned to Quick-Access Dock ★');
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(pinnedIds));
+      renderQuickDock();
+      renderVaultGrid();
+    }
+
+    // --- DIGITAL LIBRARY FILTERS & GRID ---
+    const semesters = ['All', '1.1', '1.2', '2.1', '2.2', '3.1', '3.2', '4.1', '4.2'];
+    const categories = ['All', 'Books', 'Notes', 'Questions', 'Syllabus', 'Software'];
+
+    function renderFilterBars() {
+      const semBar = document.getElementById('semesterFilterBar');
+      semBar.innerHTML = semesters.map(sem => {
+        const active = selectedSemester === sem;
+        const label = sem === 'All' ? 'All Semesters' : `Sem ${sem}`;
+        return `
+          <button type="button" onclick="setSemester('${sem}')"
+                  class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer ${active ? 'bg-sky-700 text-white shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70'}">
+            ${label}
+          </button>
+        `;
+      }).join('');
+
+      const catBar = document.getElementById('categoryFilterBar');
+      catBar.innerHTML = categories.map(cat => {
+        const active = selectedCategory === cat;
+        return `
+          <button type="button" onclick="setCategory('${cat}')"
+                  class="px-2.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition cursor-pointer ${active ? 'bg-amber-600 text-white shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70'}">
+            ${cat}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setSemester(sem) {
+      selectedSemester = sem;
+      renderFilterBars();
+      renderVaultGrid();
+    }
+
+    function setCategory(cat) {
+      selectedCategory = cat;
+      renderFilterBars();
+      renderVaultGrid();
+    }
+
+    function renderVaultGrid() {
+      const grid = document.getElementById('vaultGrid');
+      const empty = document.getElementById('vaultEmptyState');
+      const countLabel = document.getElementById('vaultResultCount');
+
+      const q = searchQuery.trim().toLowerCase();
+      const filtered = vaultResources.filter(item => {
+        const matchSem = selectedSemester === 'All' || item.sem === selectedSemester || item.sem === 'All';
+        const matchCat = selectedCategory === 'All' || item.cat === selectedCategory;
+        const matchQuery = !q ||
+          item.title.toLowerCase().includes(q) ||
+          item.code.toLowerCase().includes(q) ||
+          item.desc.toLowerCase().includes(q) ||
+          item.cat.toLowerCase().includes(q) ||
+          item.sem.toLowerCase().includes(q);
+        return matchSem && matchCat && matchQuery;
+      });
+
+      countLabel.textContent = `Showing ${filtered.length} vault${filtered.length === 1 ? '' : 's'}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      grid.innerHTML = filtered.map(item => {
+        const isPinned = pinnedIds.includes(item.id);
+        const isExternal = item.url.startsWith('http');
+        return `
+          <div class="pme-card bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="px-2 py-0.5 rounded-md bg-sky-50 text-sky-800 border border-sky-200/80 font-mono text-[11px] font-bold">
+                    ${item.sem === 'All' ? 'ALL SEM' : 'SEM ' + item.sem}
+                  </span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 font-mono text-[11px] font-semibold">
+                    ${item.code}
+                  </span>
+                  <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 text-[11px] font-semibold">
+                    ${item.cat}
+                  </span>
+                </div>
+
+                <button type="button" onclick="togglePin('${item.id}')"
+                        title="${isPinned ? 'Unpin from Quick-Access Dock' : 'Pin to Quick-Access Dock'}"
+                        class="w-7 h-7 rounded-lg flex items-center justify-center border transition cursor-pointer ${isPinned ? 'bg-amber-50 border-amber-300 text-amber-500' : 'bg-slate-50 border-slate-200 text-slate-400 hover:text-amber-500'}">
+                  ★
+                </button>
+              </div>
+
+              <h3 class="font-display font-bold text-slate-900 text-base mt-3 leading-snug">
+                ${item.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
+                ${item.desc}
+              </p>
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <a href="${item.url}" ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ''}
+                 class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-sky-700 hover:text-sky-900 transition">
+                <span>${isExternal ? 'Open Drive Folder' : 'Jump to Lab'}</span>
+                <span aria-hidden="true">${isExternal ? '↗' : '↓'}</span>
+              </a>
+              <button type="button" onclick="copyText('${item.url}')"
+                      class="text-xs font-mono text-slate-400 hover:text-slate-700 transition cursor-pointer">
+                Copy Link
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function copyText(text) {
+      const fullUrl = text.startsWith('#') ? window.location.origin + window.location.pathname + text : text;
+      navigator.clipboard?.writeText(fullUrl).then(() => {
+        showToast('Resource link copied!');
+      }).catch(() => {
+        showToast('Link ready: ' + fullUrl);
+      });
+    }
+
+    // --- EXPEDITION GALLERY ---
+    function renderGallery() {
+      const grid = document.getElementById('galleryGrid');
+      const items = selectedGalleryFilter === 'all'
+        ? galleryItems
+        : galleryItems.filter(g => g.category === selectedGalleryFilter);
+
+      grid.innerHTML = items.map(item => `
+        <figure onclick="openLightbox('${item.id}')"
+                class="pme-card group bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/90 cursor-pointer flex flex-col">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-200 relative">
+            <img src="${item.image}"
+                 onerror="this.onerror=null;this.src='${item.fallback}';"
+                 alt="${item.title}" loading="lazy"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-white/95 text-slate-900 font-mono text-xs font-bold shadow-xs">
+              ${item.tag}
+            </span>
+            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-slate-900/75 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition">
+              Click to Expand ⤢
+            </span>
+          </div>
+          <figcaption class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-display font-bold text-slate-900 text-base">${item.title}</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">${item.desc}</p>
+            </div>
+          </figcaption>
+        </figure>
+      `).join('');
+    }
+
+    function openLightbox(id) {
+      const item = galleryItems.find(g => g.id === id);
+      if (!item) return;
+      document.getElementById('lightboxTag').textContent = item.tag;
+      document.getElementById('lightboxTitle').textContent = item.title;
+      const img = document.getElementById('lightboxImg');
+      img.src = item.image;
+      img.onerror = function() { this.onerror = null; this.src = item.fallback; };
+      document.getElementById('lightboxDesc').textContent = item.desc;
+      document.getElementById('lightboxModal').classList.remove('hidden');
+    }
+
+    // --- VIDEO STUDIO ---
+    function renderVideoStudio() {
+      const playlist = document.getElementById('videoPlaylistContainer');
+      const filtered = selectedVideoTrack === 'all'
+        ? videoModules
+        : videoModules.filter(v => v.track === selectedVideoTrack);
+
+      playlist.innerHTML = filtered.map(vid => {
+        const isActive = vid.id === activeVideoId;
+        return `
+          <div class="p-3 rounded-2xl border transition flex items-center justify-between gap-3 ${isActive ? 'bg-sky-50/90 border-sky-300 shadow-xs' : 'bg-slate-50/70 hover:bg-slate-100/80 border-slate-200/80'}">
+            <button type="button" onclick="selectVideo('${vid.id}')" class="text-left flex-1 min-w-0 cursor-pointer">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded font-mono text-[10px] font-bold ${vid.track === 'GIS' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+                  ${vid.number}
+                </span>
+                <span class="text-[11px] font-mono text-slate-400">${vid.duration}</span>
+              </div>
+              <div class="font-semibold text-xs sm:text-sm text-slate-900 mt-1 truncate">
+                ${vid.title}
+              </div>
+            </button>
+            <a href="${vid.watchUrl}" target="_blank" rel="noopener noreferrer"
+               title="Open directly on YouTube"
+               class="px-2.5 py-1.5 rounded-lg bg-white hover:bg-red-50 text-slate-600 hover:text-red-600 border border-slate-200 text-xs font-semibold shrink-0 transition">
+              YT ↗
+            </a>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectVideo(id) {
+      const vid = videoModules.find(v => v.id === id);
+      if (!vid) return;
+      activeVideoId = vid.id;
+      document.getElementById('mainVideoIframe').src = `https://www.youtube.com/embed/${vid.youtubeId}?rel=0`;
+      document.getElementById('activeVideoBadge').textContent = vid.track === 'GIS' ? 'GIS VIDEOS' : 'EEE COURSE 2.1';
+      document.getElementById('activeVideoCode').textContent = vid.duration;
+      document.getElementById('activeVideoTitle').textContent = vid.title;
+      document.getElementById('activeVideoExternalLink').href = vid.watchUrl;
+      renderVideoStudio();
+    }
+
+    // --- INITIALIZATION & EVENT LISTENERS ---
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCarousel();
+      resetCarouselAutoplay();
+      renderQuickDock();
+      renderFilterBars();
+      renderVaultGrid();
+      renderGallery();
+      renderVideoStudio();
+
+      document.getElementById('prevSlideBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+      document.getElementById('nextSlideBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+
+      // Header Search Shortcut & "/" Key
+      const searchInput = document.getElementById('vaultSearchInput');
+      document.getElementById('headerSearchBtn').addEventListener('click', () => {
+        document.getElementById('library').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => searchInput.focus(), 350);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          document.getElementById('library').scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => searchInput.focus(), 300);
+        } else if (e.key === 'Escape') {
+          document.getElementById('lightboxModal').classList.add('hidden');
+          document.getElementById('qrModal').classList.add('hidden');
+        }
+      });
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        renderVaultGrid();
+      });
+
+      document.getElementById('resetFiltersBtn').addEventListener('click', () => {
+        selectedSemester = 'All';
+        selectedCategory = 'All';
+        searchQuery = '';
+        searchInput.value = '';
+        renderFilterBars();
+        renderVaultGrid();
+      });
+
+      // Gallery Filters
+      document.querySelectorAll('.gal-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedGalleryFilter = btn.dataset.galFilter;
+          document.querySelectorAll('.gal-filter-btn').forEach(b => {
+            b.className = 'gal-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer';
+          });
+          btn.className = 'gal-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-sky-700 text-white transition cursor-pointer';
+          renderGallery();
+        });
+      });
+
+      // Video Track Filters
+      document.querySelectorAll('.vid-track-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedVideoTrack = btn.dataset.videoTrack;
+          document.querySelectorAll('.vid-track-btn').forEach(b => {
+            b.className = 'vid-track-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-100 transition cursor-pointer';
+          });
+          btn.className = 'vid-track-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-700 text-white transition cursor-pointer';
+          renderVideoStudio();
+        });
+      });
+
+      // Lightbox Close
+      const lightboxModal = document.getElementById('lightboxModal');
+      document.getElementById('closeLightboxBtn').addEventListener('click', () => lightboxModal.classList.add('hidden'));
+      lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) lightboxModal.classList.add('hidden');
+      });
+
+      // QR Modal
+      const qrModal = document.getElementById('qrModal');
+      document.getElementById('openQrModalBtn').addEventListener('click', () => {
+        const shareUrl = encodeURIComponent(window.location.href);
+        document.getElementById('qrCodeImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${shareUrl}`;
+        qrModal.classList.remove('hidden');
+      });
+      document.getElementById('closeQrModalBtn').addEventListener('click', () => qrModal.classList.add('hidden'));
+      qrModal.addEventListener('click', (e) => {
+        if (e.target === qrModal) qrModal.classList.add('hidden');
+      });
+      document.getElementById('copyPortalUrlBtn').addEventListener('click', () => {
+        copyText(window.location.href);
+      });
+    });
+  </script>
+</body>
+</html>
