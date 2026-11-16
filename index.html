@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Department of Petroleum & Mining Engineering (PME), Jashore University of Science and Technology (JUST) — Unified Departmental Portal, Digital Library, Expedition Gallery, and Geoinformatics Lab." />
+  <title>JUST PME Portal | Department of Petroleum &amp; Mining Engineering</title>
+  <style>
+    :root {
+      --bg-obsidian: #050912;
+      --bg-slate: #0b1120;
+      --bg-card: rgba(15, 23, 42, 0.78);
+      --bg-card-hover: rgba(22, 33, 58, 0.92);
+      --border-subtle: rgba(148, 163, 184, 0.14);
+      --border-accent: rgba(245, 158, 11, 0.42);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --amber: #f59e0b;
+      --amber-soft: rgba(245, 158, 11, 0.15);
+      --cyan: #06b6d4;
+      --cyan-soft: rgba(6, 182, 212, 0.15);
+      --emerald: #10b981;
+      --emerald-soft: rgba(16, 185, 129, 0.15);
+      --violet: #8b5cf6;
+      --violet-soft: rgba(139, 92, 246, 0.15);
+      --rose: #f43f5e;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-glow: 0 20px 50px -15px rgba(0, 0, 0, 0.75);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background-color: var(--bg-obsidian); color: var(--text-primary); font-family: var(--font-sans); }
+    body {
+      min-height: 100vh;
+      background-color: var(--bg-obsidian);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(245, 158, 11, 0.08), transparent 36%),
+        radial-gradient(circle at 85% 22%, rgba(6, 182, 212, 0.09), transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.06), transparent 45%),
+        linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    /* Top Feedback Bar */
+    .feedback-bar {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.16), rgba(6, 182, 212, 0.16));
+      border-bottom: 1px solid rgba(245, 158, 11, 0.28);
+      padding: 8px 20px;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .feedback-bar span { display: inline-flex; align-items: center; gap: 6px; }
+    .feedback-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--amber);
+      box-shadow: 0 0 10px var(--amber);
+    }
+    .btn-apply {
+      background: var(--amber);
+      color: #090d16;
+      font-weight: 700;
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .btn-apply:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45); }
+
+    /* Sticky Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(5, 9, 18, 0.84);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-badge {
+      width: 40px; height: 40px; border-radius: 11px;
+      background: linear-gradient(135deg, var(--amber), #d97706);
+      display: grid; place-items: center;
+      color: #060a12; font-weight: 900; font-size: 0.95rem;
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+      flex-shrink: 0;
+    }
+    .brand-title { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--text-primary); }
+    .brand-sub { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+    .nav-links { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .nav-link {
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: rgba(245, 158, 11, 0.14);
+      color: var(--amber);
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search-box input {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 7px 34px 7px 14px;
+      color: var(--text-primary);
+      font-size: 0.83rem;
+      width: 220px;
+      outline: none;
+      transition: border-color 0.2s ease, width 0.2s ease;
+    }
+    .search-box input:focus { border-color: var(--cyan); width: 260px; }
+    .search-kbd {
+      position: absolute; right: 10px;
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--text-muted);
+      background: rgba(148, 163, 184, 0.12);
+      padding: 1px 6px; border-radius: 4px;
+      pointer-events: none;
+    }
+    .btn-qr-trigger {
+      background: rgba(6, 182, 212, 0.14);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: var(--cyan);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-qr-trigger:hover { background: rgba(6, 182, 212, 0.24); transform: translateY(-1px); }
+
+    /* Pinned Quick Dock */
+    .pinned-dock {
+      max-width: 1320px;
+      margin: 14px auto 0;
+      padding: 0 24px;
+    }
+    .pinned-inner {
+      background: rgba(15, 23, 42, 0.68);
+      border: 1px dashed rgba(245, 158, 11, 0.32);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .pinned-label {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      font-weight: 700;
+    }
+    .pinned-chips { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1; }
+    .pin-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--text-primary);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .pin-chip a:hover { color: var(--amber); text-decoration: underline; }
+    .pin-chip button { color: var(--text-muted); font-size: 0.85rem; line-height: 1; }
+    .pin-chip button:hover { color: var(--rose); }
+
+    /* Container & Sections */
+    .container { max-width: 1320px; margin: 0 auto; padding: 28px 24px 80px; }
+    section { margin-bottom: 68px; scroll-margin-top: 84px; }
+
+    /* Hero */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .hero-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(11, 17, 32, 0.88));
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cyan);
+      background: var(--cyan-soft);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      padding: 5px 12px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      font-weight: 850;
+      line-height: 1.16;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 30%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-motto {
+      font-size: 1.05rem;
+      color: var(--amber);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .hero-desc {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      margin-bottom: 24px;
+      max-width: 62ch;
+    }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--amber), #d97706);
+      color: #060a12;
+      font-weight: 800;
+      padding: 11px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(245, 158, 11, 0.45); }
+    .btn-secondary {
+      background: rgba(30, 41, 59, 0.75);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-weight: 700;
+      padding: 11px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(6, 182, 212, 0.1); }
+
+    /* Metrics Strip */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .metric-item {
+      background: rgba(5, 9, 18, 0.55);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+    }
+    .metric-val { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); font-family: var(--font-mono); }
+    .metric-lbl { font-size: 0.72rem; color: var(--text-muted); }
+
+    /* Showcase Carousel */
+    .carousel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-glow);
+    }
+    .carousel-stage {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      min-height: 250px;
+      background: #070d19;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px;
+    }
+    .carousel-bg-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.9;
+    }
+    .carousel-overlay {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(to top, rgba(5, 9, 18, 0.95) 20%, rgba(5, 9, 18, 0.65) 100%);
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .carousel-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .carousel-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; }
+    .carousel-caption { font-size: 0.84rem; color: var(--text-secondary); }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+    .carousel-dots { display: flex; gap: 8px; }
+    .c-dot {
+      width: 26px; height: 6px; border-radius: 999px;
+      background: rgba(148, 163, 184, 0.25);
+      transition: all 0.25s ease;
+    }
+    .c-dot.active { background: var(--amber); width: 42px; }
+    .carousel-btns { display: flex; gap: 8px; }
+    .c-btn {
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .c-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+    /* Section Headers */
+    .sec-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .sec-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      margin-bottom: 4px;
+    }
+    .sec-title { font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; letter-spacing: -0.02em; }
+    .sec-sub { color: var(--text-muted); font-size: 0.92rem; max-width: 68ch; }
+
+    /* 3 Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+    }
+    .pillar-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: grid; place-items: center;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+    .pillar-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; }
+    .pillar-card p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 18px; }
+    .pillar-link {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--amber);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pillar-link:hover { text-decoration: underline; }
+
+    /* Departmental Tracks Switcher */
+    .tracks-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+    .track-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+    .track-tab {
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s ease;
+    }
+    .track-tab.active, .track-tab:hover {
+      background: var(--amber-soft);
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    .track-panel {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .track-panel h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
+    .track-panel p { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 16px; }
+    .track-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .t-tag {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.28);
+      color: var(--cyan);
+    }
+    .track-actions {
+      background: rgba(5, 9, 18, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Digital Library & Study Vault */
+    .vault-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+    }
+    .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-pill {
+      padding: 6px 13px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .filter-pill.active, .filter-pill:hover {
+      background: var(--cyan-soft);
+      border-color: rgba(6, 182, 212, 0.4);
+      color: var(--cyan);
+    }
+
+    .semesters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .sem-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .sem-card:hover { transform: translateY(-3px); border-color: rgba(6, 182, 212, 0.42); }
+    .sem-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .sem-code {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--amber);
+    }
+    .sem-year {
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      background: rgba(148, 163, 184, 0.12);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .sem-links { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .vault-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 11px;
+      border-radius: var(--radius-sm);
+      background: rgba(5, 9, 18, 0.65);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.81rem;
+      font-weight: 600;
+      transition: all 0.18s ease;
+    }
+    .vault-btn:hover {
+      border-color: var(--amber);
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--amber);
+    }
+    .vault-btn.pending {
+      opacity: 0.55;
+      cursor: not-allowed;
+      border-style: dashed;
+    }
+    .vault-btn.pending:hover { border-color: var(--border-subtle); background: rgba(5, 9, 18, 0.65); color: inherit; }
+    .mini-actions { display: inline-flex; align-items: center; gap: 5px; }
+    .icon-mini {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .icon-mini:hover { color: var(--cyan); background: rgba(6, 182, 212, 0.15); }
+
+    /* Category Vault View */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .cat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+    .cat-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 12px; color: var(--cyan); }
+    .cat-list { display: flex; flex-direction: column; gap: 8px; }
+
+    /* Software & Utilities Two-Column */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .panel-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+    .panel-box h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .resource-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 13px;
+      border-radius: var(--radius-sm);
+      background: rgba(5, 9, 18, 0.6);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 9px;
+      transition: border-color 0.2s ease;
+    }
+    .resource-row:last-child { margin-bottom: 0; }
+    .resource-row:hover { border-color: var(--cyan); }
+    .res-meta { display: flex; flex-direction: column; }
+    .res-title { font-weight: 700; font-size: 0.88rem; }
+    .res-tag { font-size: 0.74rem; color: var(--text-muted); font-family: var(--font-mono); }
+    .res-btns { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .btn-open-sm {
+      background: rgba(6, 182, 212, 0.16);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: var(--cyan);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+    .btn-open-sm:hover { background: var(--cyan); color: #050912; }
+
+    /* Memory Gallery (OneDrive) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .album-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+    .album-card:hover { transform: translateY(-4px); border-color: var(--amber); }
+    .album-cover {
+      height: 165px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .album-cover svg { width: 100%; height: 100%; display: block; }
+    .album-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: rgba(5, 9, 18, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--amber);
+    }
+    .album-body { padding: 18px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .album-body h3 { font-size: 1.08rem; font-weight: 800; margin-bottom: 6px; }
+    .album-body p { font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 16px; }
+    .album-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
+    /* Geoinformatics GIS Studio */
+    .gis-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .gis-modules { display: flex; flex-direction: column; gap: 10px; }
+    .gis-mod-btn {
+      text-align: left;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 15px 18px;
+      transition: all 0.2s ease;
+    }
+    .gis-mod-btn.active, .gis-mod-btn:hover {
+      border-color: var(--emerald);
+      background: rgba(16, 185, 129, 0.1);
+    }
+    .gis-mod-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--emerald); font-weight: 700; }
+    .gis-mod-title { font-weight: 800; font-size: 0.96rem; margin: 2px 0 4px; }
+    .gis-mod-desc { font-size: 0.8rem; color: var(--text-muted); }
+
+    .gis-stage {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #04070e;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      margin-bottom: 16px;
+    }
+    .video-frame iframe { width: 100%; height: 100%; border: 0; }
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      background: radial-gradient(circle at center, rgba(16, 185, 129, 0.14), rgba(5, 9, 18, 0.96));
+    }
+    .yt-binder {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .yt-binder input {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(5, 9, 18, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--text-primary);
+      font-size: 0.83rem;
+      outline: none;
+    }
+    .yt-binder input:focus { border-color: var(--emerald); }
+    .checklist-box {
+      background: rgba(5, 9, 18, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+    .checklist-box h4 { font-size: 0.84rem; font-family: var(--font-mono); color: var(--emerald); margin-bottom: 10px; text-transform: uppercase; }
+    .chk-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      padding: 5px 0;
+      cursor: pointer;
+    }
+    .chk-item input { accent-color: var(--emerald); width: 16px; height: 16px; }
+
+    /* Connect & SPE Footer Hub */
+    .connect-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(11, 17, 32, 0.9));
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .email-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      color: var(--amber);
+      margin: 14px 0 20px;
+      flex-wrap: wrap;
+    }
+    .social-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .social-btn {
+      padding: 9px 15px;
+      border-radius: var(--radius-sm);
+      background: rgba(30, 41, 59, 0.75);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.84rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .social-btn:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-1px); }
+    .qr-panel {
+      background: rgba(5, 9, 18, 0.72);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+    }
+    .qr-box {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 12px;
+      width: 148px;
+      height: 148px;
+      display: grid;
+      place-items: center;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Modals & Toast */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 14, 0.84);
+      backdrop-filter: blur(8px);
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-card {
+      background: #0d1526;
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      max-width: 560px;
+      width: 100%;
+      padding: 26px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(148, 163, 184, 0.14);
+      font-size: 1.1rem;
+      display: grid; place-items: center;
+    }
+    .modal-close:hover { background: var(--rose); color: #fff; }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      border: 1px solid var(--amber);
+      color: var(--text-primary);
+      padding: 11px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      z-index: 1500;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .track-panel, .tools-grid, .gis-grid, .connect-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .nav-inner { padding: 10px 16px; }
+      .search-box input { width: 160px; }
+      .search-box input:focus { width: 190px; }
+      .sem-links { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Feedback & Troubleshooting Banner -->
+  <div class="feedback-bar">
+    <span><span class="feedback-dot"></span> For site feedback and troubleshooting please fill up this form</span>
+    <a class="btn-apply" href="https://forms.gle/vXRELJM4wTeZEa1S7" target="_blank" rel="noopener noreferrer">Apply ↗</a>
+  </div>
+
+  <!-- Sticky Navigation -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="brand">
+        <div class="brand-badge">PME</div>
+        <div>
+          <div class="brand-title">JUST PME Portal</div>
+          <div class="brand-sub">Dept. of Petroleum &amp; Mining Engineering</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#library" class="nav-link">Digital Library</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#gis-lab" class="nav-link">GIS Lab</a>
+        <a href="#connect" class="nav-link">SPE &amp; Connect</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="search-box">
+          <input type="text" id="globalSearch" placeholder="Search books, sheets, GIS..." aria-label="Search portal resources" />
+          <span class="search-kbd">/</span>
+        </div>
+        <button type="button" class="btn-qr-trigger" data-action="open-qr">QR Share</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pinned Quick-Access Dock -->
+  <div class="pinned-dock">
+    <div class="pinned-inner">
+      <span class="pinned-label">★ Quick-Access Dock:</span>
+      <div class="pinned-chips" id="pinnedChips"></div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- HERO & DEPARTMENTAL SHOWCASE -->
+    <section id="home">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div>
+            <div class="hero-eyebrow">Jashore University of Science &amp; Technology · SPE Chapter 6291</div>
+            <h1 class="hero-title">"The next gen engineering students of JUST here to make a difference"</h1>
+            <p class="hero-motto">Our Passion Is What Fuels Our Hunger For Knowledge!</p>
+            <p class="hero-desc">
+              Unified departmental academic portal for Petroleum &amp; Mining Engineering (PME) at JUST. Access semester-wise textbooks, lecture sheets, past final papers, syllabi, reservoir &amp; GIS software, field expedition archives, and Geoinformatics lab tutorials in one click.
+            </p>
+            <div class="hero-cta-row">
+              <a href="#library" class="btn-primary">Explore Digital Library ↓</a>
+              <a href="#gis-lab" class="btn-secondary">Launch GIS Lab Studio</a>
+              <a href="https://sites.google.com/view/justpmebatch14th/family" target="_blank" rel="noopener noreferrer" class="btn-secondary">Department Directory ↗</a>
+            </div>
+          </div>
+
+          <div class="metrics-strip">
+            <div class="metric-item">
+              <div class="metric-val">8</div>
+              <div class="metric-lbl">Academic Semesters</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val">35+</div>
+              <div class="metric-lbl">Direct Drive Vaults</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val">5</div>
+              <div class="metric-lbl">Engineering Suites</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val">6291</div>
+              <div class="metric-lbl">JUST SPE Chapter</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive 3-Slide Showcase Carousel -->
+        <div class="carousel-card">
+          <div class="carousel-stage" id="carouselStage"></div>
+          <div class="carousel-controls">
+            <div class="carousel-dots" id="carouselDots"></div>
+            <div class="carousel-btns">
+              <button type="button" class="c-btn" data-action="prev-slide">← Prev</button>
+              <button type="button" class="c-btn" data-action="next-slide">Next →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THREE DEPARTMENTAL PILLARS -->
+    <section id="pillars">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">Core Ecosystem</div>
+          <h2 class="sec-title">Departmental Pillars &amp; Student Community</h2>
+        </div>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div>
+            <div class="pillar-icon" style="background: var(--amber-soft); color: var(--amber);">📚</div>
+            <h3>Digital Library &amp; Study Vault</h3>
+            <p>Our vast digital library of semester-wise books, lecture sheets, syllabi, and final question banks to power your journey in Petroleum &amp; Mining Engineering.</p>
+          </div>
+          <a href="#library" class="pillar-link">Open 1-Click Drive Vault →</a>
+        </div>
+
+        <div class="pillar-card">
+          <div>
+            <div class="pillar-icon" style="background: var(--cyan-soft); color: var(--cyan);">🧭</div>
+            <h3>Field &amp; Cultural Gallery</h3>
+            <p>Photographic memories and geological field tour archives collected across mining expeditions, industrial visits, and campus festivals.</p>
+          </div>
+          <a href="#gallery" class="pillar-link">Browse Expedition Albums →</a>
+        </div>
+
+        <div class="pillar-card">
+          <div>
+            <div class="pillar-icon" style="background: var(--emerald-soft); color: var(--emerald);">⛽</div>
+            <h3>JUST SPE Student Chapter (6291)</h3>
+            <p>The official Society of Petroleum Engineers student community at JUST bringing together aspiring petroleum &amp; mining engineers under one roof.</p>
+          </div>
+          <a href="https://www.facebook.com/JUST.spe" target="_blank" rel="noopener noreferrer" class="pillar-link">Visit JUST SPE Chapter ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPARTMENTAL TRACKS & DIRECTORY SPOTLIGHT -->
+    <section id="tracks">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">Academic &amp; Research Structure</div>
+          <h2 class="sec-title">Departmental Tracks, Faculty &amp; Research Archive</h2>
+        </div>
+      </div>
+
+      <div class="tracks-box">
+        <div class="track-tabs" id="trackTabs">
+          <button type="button" class="track-tab active" data-track="0">Undergraduate Curriculum</button>
+          <button type="button" class="track-tab" data-track="1">Research &amp; Capstone Projects</button>
+          <button type="button" class="track-tab" data-track="2">Student Leadership &amp; SPE 6291</button>
+          <button type="button" class="track-tab" data-track="3">Geoinformatics &amp; Simulation Labs</button>
+        </div>
+        <div class="track-panel" id="trackPanel"></div>
+      </div>
+    </section>
+
+    <!-- PME DIGITAL LIBRARY & STUDY VAULT (1-CLICK GOOGLE DRIVE) -->
+    <section id="library">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">1-Click Direct Cloud Repository</div>
+          <h2 class="sec-title">PME Digital Library &amp; Study Vault</h2>
+          <p class="sec-sub">Direct access to Google Drive folders for Books, Lecture Sheets, Semester Final Papers, and Syllabi across Years 1–4. Note: Some folders require university email authorization upon first click.</p>
+        </div>
+      </div>
+
+      <div class="vault-toolbar">
+        <div class="filter-group" id="yearFilters">
+          <button type="button" class="filter-pill active" data-year="all">All Years (1.1 – 4.2)</button>
+          <button type="button" class="filter-pill" data-year="1">1st Year (1.1 – 1.2)</button>
+          <button type="button" class="filter-pill" data-year="2">2nd Year (2.1 – 2.2)</button>
+          <button type="button" class="filter-pill" data-year="3">3rd Year (3.1 – 3.2)</button>
+          <button type="button" class="filter-pill" data-year="4">4th Year (4.1 – 4.2)</button>
+        </div>
+
+        <div class="filter-group" id="viewSwitch">
+          <button type="button" class="filter-pill active" data-view="matrix">Semester Matrix View</button>
+          <button type="button" class="filter-pill" data-view="category">Category Vault View</button>
+        </div>
+      </div>
+
+      <div id="semesterMatrixView" class="semesters-grid"></div>
+      <div id="categoryVaultView" class="category-grid hidden"></div>
+
+      <!-- Engineering Software Suite & Departmental Utilities -->
+      <div class="tools-grid">
+        <div class="panel-box">
+          <h3>🛠️ Engineering Software Suite (64-Bit)</h3>
+          <div id="softwareList"></div>
+        </div>
+
+        <div class="panel-box">
+          <h3>📌 Departmental &amp; University Utilities</h3>
+          <div id="utilityList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPEDITION & CULTURAL MEMORY GALLERY -->
+    <section id="gallery">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">Visual &amp; Field Archives</div>
+          <h2 class="sec-title">Field Tours &amp; Campus Fest Gallery</h2>
+          <p class="sec-sub">Glimpses of geological field tours, mining site visits, and flagship cultural events. Click any album cover to inspect details or open the full OneDrive photo archive.</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- GEOINFORMATICS LABORATORY (GIS TUTORIALS) -->
+    <section id="gis-lab">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">Geoinformatics Laboratory</div>
+          <h2 class="sec-title">Interactive GIS Tutorials &amp; Lab Studio</h2>
+          <p class="sec-sub">Select a Geoinformatics lab module, bind any YouTube tutorial link or video ID for inline playback, and track your ArcGIS workflow steps.</p>
+        </div>
+      </div>
+
+      <div class="gis-grid">
+        <div class="gis-modules" id="gisModules"></div>
+
+        <div class="gis-stage">
+          <div class="video-frame" id="gisVideoFrame"></div>
+
+          <div class="yt-binder">
+            <input type="text" id="ytCustomInput" placeholder="Paste YouTube URL or 11-char Video ID (e.g. dQw4w9WgXcQ)..." aria-label="YouTube video link or ID" />
+            <button type="button" class="btn-primary" style="padding: 8px 14px; font-size: 0.82rem;" data-action="bind-yt">Load Video</button>
+            <a href="https://www.youtube.com/results?search_query=ArcGIS+10.8+tutorial+geology+hydrology" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 12px; font-size: 0.8rem;">YouTube GIS Search ↗</a>
+          </div>
+
+          <div class="checklist-box" id="gisChecklist"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFICIAL INQUIRIES, SPE CHAPTER & QR HUB -->
+    <section id="connect">
+      <div class="connect-grid">
+        <div>
+          <div class="sec-kicker">Official Departmental Communication</div>
+          <h2 class="sec-title">Connect with JUST PME &amp; SPE Student Chapter</h2>
+          <p class="sec-sub" style="margin-top: 8px;">
+            For academic queries, digital library access requests, or SPE Student Chapter collaborations, reach out via our official departmental student desk.
+          </p>
+
+          <div class="email-pill">
+            <span>✉ 220807.pme@student.just.edu.bd</span>
+            <button type="button" class="btn-open-sm" data-action="copy-text" data-copy="220807.pme@student.just.edu.bd">Copy Email</button>
+            <a href="mailto:220807.pme@student.just.edu.bd" class="btn-open-sm">Send Mail ↗</a>
+          </div>
+
+          <div class="social-row">
+            <a href="https://www.spe.org/en/chapter/6274" target="_blank" rel="noopener noreferrer" class="social-btn">🌐 SPE International Chapter</a>
+            <a href="https://www.facebook.com/JUST.spe" target="_blank" rel="noopener noreferrer" class="social-btn">📘 JUST SPE Facebook</a>
+            <a href="http://www.linkedin.com/in/devjyoti-dey" target="_blank" rel="noopener noreferrer" class="social-btn">💼 Portal Maintainer LinkedIn</a>
+            <a href="https://forms.gle/vXRELJM4wTeZEa1S7" target="_blank" rel="noopener noreferrer" class="social-btn">🛠 Report Link / Feedback</a>
+          </div>
+        </div>
+
+        <div class="qr-panel">
+          <div class="qr-box" id="inlineQrBox" aria-label="Portal QR Code"></div>
+          <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--amber); font-weight: 700;">SCAN THIS QR CODE TO GET THE LINK</div>
+          <button type="button" class="btn-secondary" style="padding: 6px 12px; font-size: 0.78rem;" data-action="copy-url">Copy Live Portal URL</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Department of Petroleum &amp; Mining Engineering (PME) · Jashore University of Science and Technology (JUST) · Ready for Vercel Static Hosting
+  </footer>
+
+  <!-- Lightbox Modal for Gallery Albums -->
+  <div class="modal-backdrop" id="albumModal" role="dialog" aria-modal="true" aria-labelledby="modalAlbumTitle">
+    <div class="modal-card">
+      <button type="button" class="modal-close" data-action="close-modal" aria-label="Close modal">✕</button>
+      <div id="modalAlbumPoster" style="border-radius: 12px; overflow: hidden; margin-bottom: 16px; height: 190px;"></div>
+      <div class="sec-kicker" id="modalAlbumTag"></div>
+      <h3 id="modalAlbumTitle" style="font-size: 1.35rem; font-weight: 800; margin-bottom: 8px;"></h3>
+      <p id="modalAlbumDesc" style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 20px;"></p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a id="modalAlbumLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Open OneDrive Photo Folder ↗</a>
+        <button type="button" id="modalAlbumCopy" class="btn-secondary" data-action="copy-text" data-copy="">Copy Archive Link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Modal -->
+  <div class="modal-backdrop" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+    <div class="modal-card" style="max-width: 400px; text-align: center;">
+      <button type="button" class="modal-close" data-action="close-modal" aria-label="Close QR modal">✕</button>
+      <div class="sec-kicker">Instant Mobile Share</div>
+      <h3 id="qrModalTitle" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 14px;">JUST PME Portal QR</h3>
+      <div class="qr-box" id="modalQrBox" style="margin: 0 auto 14px; width: 180px; height: 180px;"></div>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px;">Scan with any phone camera to open this departmental portal.</p>
+      <button type="button" class="btn-primary" style="width: 100%; justify-content: center;" data-action="copy-url">Copy Portal Link</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* Sandbox-safe storage wrapper */
+      const memoryStore = {};
+      const safeStorage = {
+        get(key) {
+          try {
+            return window.localStorage.getItem(key);
+          } catch (e) {
+            return Object.prototype.hasOwnProperty.call(memoryStore, key) ? memoryStore[key] : null;
+          }
+        },
+        set(key, val) {
+          try {
+            window.localStorage.setItem(key, val);
+          } catch (e) {
+            memoryStore[key] = val;
+          }
+        }
+      };
+
+      /* Complete Verified Data from Google Sites Backend */
+      const SEMESTERS = [
+        {
+          code: "1.1", year: "1", label: "Year 1 · Semester I",
+          books: "https://drive.google.com/drive/folders/1EPpbW6Xl-iYhL_Bf2_jn_utpnwEf6PHL?usp=sharing",
+          sheets: "https://drive.google.com/drive/folders/17vl1hTjhtnZZHrNPrzLS9IN86dVuxs_d?usp=sharing",
+          papers: "https://drive.google.com/drive/folders/1AqA9_IUQkX0QOHzrnqyAi-uQpSFWPAi4?usp=sharing",
+          syllabus: "https://drive.google.com/file/d/1vmK9jHdDnLEE0SvE_RtanBBhsyRAJZmI/view?usp=sharing"
+        },
+        {
+          code: "1.2", year: "1", label: "Year 1 · Semester II",
+          books: "https://drive.google.com/drive/folders/1YkS24-8aQRD-odvdYVRy5fkwiDa47zPU?usp=drive_link",
+          sheets: "https://drive.google.com/drive/folders/1LVbfcK4WGX6qGpA-envKIPqQHlex1x4h?usp=sharing",
+          papers: "https://drive.google.com/drive/folders/1_3rFOfYiYhI6kxrV8kMBQN0GVK_xBrLf?usp=sharing",
+          syllabus: "https://drive.google.com/file/d/1L0ttlQkZ19gawlC0qRgVRkSn4VBRGm3F/view?usp=sharing"
+        },
+        {
+          code: "2.1", year: "2", label: "Year 2 · Semester I",
+          books: "https://drive.google.com/drive/folders/1O_eCobKznkSAqlJb_XVm5qarExR6_AFG?usp=drive_link",
+          sheets: "https://drive.google.com/drive/folders/1v-_O6gCxDf--R_AVjd-Vf6niPYHkqflU?usp=drive_link",
+          papers: "https://drive.google.com/drive/folders/1U9lMX9FiD5qJDfpu36LXN10K0-bgxzHW?usp=sharing",
+          syllabus: "https://drive.google.com/file/d/1_FNQ_mVZZ19KZ9aCWgHiotgmWuSLeWdG/view?usp=drive_link"
+        },
+        {
+          code: "2.2", year: "2", label: "Year 2 · Semester II",
+          books: "https://drive.google.com/drive/folders/1qOGrzHH5J5WnKKovy-YkhnCD5j8vyWk3?usp=drive_link",
+          sheets: "https://drive.google.com/drive/folders/16J0o5Imw1x7WBB4UyHXZVCaHo4fvxC4o?usp=sharing",
+          papers: "https://drive.google.com/drive/folders/1QxnbLux-o2xOHyZugYOkleJtFPKw527I?usp=drive_link",
+          syllabus: "https://drive.google.com/file/d/16EC5264XQfA9TpMr6TafJ6xS4jIliFwv/view?usp=sharing"
+        },
+        {
+          code: "3.1", year: "3", label: "Year 3 · Semester I",
+          books: "https://drive.google.com/drive/folders/18cAOyMsJCl_h1Es3DrE2CdqP19qZVqSN?usp=sharing",
+          sheets: "https://drive.google.com/drive/folders/1tOx9nIYMPuXQM4Qk3dQNBAUiEWRWrGsY?usp=sharing",
+          papers: "https://drive.google.com/drive/folders/1jbq4RUj52SX6b0yX4ompoU1NC_s9uC5C?usp=sharing",
+          syllabus: "https://drive.google.com/file/d/1VtnCsIJ-WW77rXC6AXo66D8_Mtaqc74m/view?usp=sharing"
+        },
+        {
+          code: "3.2", year: "3", label: "Year 3 · Semester II",
+          books: "https://drive.google.com/drive/folders/1AnpS9CirYHhl2h9W5cL85x9aQIn-Chva?usp=drive_link",
+          sheets: "https://drive.google.com/drive/folders/1MG6sF2CpdPYrnnmIGFg-a6xM9owiwOmo?usp=sharing",
+          papers: "https://drive.google.com/drive/folders/1jdEvVXOsPDmUMtTIvL1AJ9UDwrdx7Nre?usp=drive_link",
+          syllabus: "https://drive.google.com/file/d/1CvTlFCCxTU5LKBv2OvYTTvK47WmZjkyB/view?usp=sharing"
+        },
+        {
+          code: "4.1", year: "4", label: "Year 4 · Semester I",
+          books: "https://drive.google.com/drive/folders/1No4E_JGE9N8dkO3qcV-P8Gyaex-HEvoG?usp=sharing",
+          sheets: "https://drive.google.com/drive/folders/1No4E_JGE9N8dkO3qcV-P8Gyaex-HEvoG?usp=sharing",
+          papers: "https://drive.google.com/drive/folders/1QknPrKRi4cxmKNKAbLh2g0gw4Vbzp8Op?usp=sharing",
+          syllabus: "https://drive.google.com/file/d/1ALP15DmUYpdXTtMHEzN3tt4RpKnfLtrV/view?usp=sharing"
+        },
+        {
+          code: "4.2", year: "4", label: "Year 4 · Semester II",
+          books: null, sheets: null, papers: null, syllabus: null
+        }
+      ];
+
+      const SOFTWARE = [
+        { id: "sw-arcgis", title: "ArcGIS 10.8 (64-Bit)", lab: "GIS & Geoinformatics Lab", url: "https://drive.google.com/drive/folders/1SPjcG-_5u6rgCVF9Vzi8a6ZAvqUc3nkW?usp=sharing" },
+        { id: "sw-autocad-1", title: "AutoCAD 2018 (64-Bit) · Primary", lab: "Engineering Drawing Lab", url: "https://drive.google.com/drive/folders/1z_azyagok-RvZZ5LvnRL8Alh8YGcMAmP?usp=sharing" },
+        { id: "sw-autocad-2", title: "AutoCAD 2018 (64-Bit) · Mirror", lab: "Engineering Drawing Lab (Backup)", url: "https://drive.google.com/drive/folders/14_bPttj7DBjYyIdXNuE_AHifpMrmty7_?usp=sharing" },
+        { id: "sw-gearth", title: "Google Earth Pro (64-Bit)", lab: "Remote Sensing & GIS Lab", url: "https://drive.google.com/file/d/15tEQzjhUegPM1cNaUHQslgWKEVjMcWWy/view?usp=drive_link" },
+        { id: "sw-petrel", title: "Petrel 2017 (64-Bit)", lab: "Reservoir Characterization & Simulation", url: "https://drive.google.com/file/d/1vce5BWN2zG--4AzEY0alHFlUjG3VvDJR/view?usp=drive_link" }
+      ];
+
+      const UTILITIES = [
+        { id: "ut-notes", title: "Exclusive Notes (CT Questions & Written Notes)", lab: "Curated Exam Prep Drive", url: "https://drive.google.com/drive/folders/10weColTFVrH_WbnHclK4Ec-CiOzHGCHW?usp=drive_link" },
+        { id: "ut-cover", title: "Assignment & Lab Report Cover Generator", lab: "Automated Google Form Tool", url: "https://docs.google.com/forms/d/e/1FAIpQLSee27bmbtnBRbC2Ns-IIIJGD9ZY3KHiy7eqFT-UdR3kEwuFKQ/viewform" },
+        { id: "ut-cal", title: "JUST Academic Calendar", lab: "Official Semester Schedule PDF", url: "https://drive.google.com/file/d/1Ar0xjbA6H_rMAPrBDPzjjqqW1ainIOmU/view" },
+        { id: "ut-reg", title: "Exam Course Registration Portal", lab: "exam.just.edu.bd/ug", url: "http://exam.just.edu.bd/ug/index.php" },
+        { id: "ut-varsity", title: "Varsity Related Information", lab: "Departmental Handbook & Guidelines", url: "https://drive.google.com/file/d/1GisY68tAxzWQP6UOPe18OU73fd0GLm1k/view?usp=drive_link" }
+      ];
+
+      const ALBUMS = [
+        {
+          id: "alb-ft12",
+          title: "Field Tour (1.2)",
+          tag: "Geological Expedition · 30 Nov – 6 Dec",
+          desc: "A memorable geological field tour that took place from 30th November to 6th December. An enjoyable and educational expedition filled with stratigraphic observations, precious memories, and field lessons.",
+          url: "https://1drv.ms/f/c/7d15837eaecd05f1/Esz1jptTv5hAilZ7yjvZYdUBtPfF2tIj65IVFWEzz99eww?e=IWid3r",
+          theme: "strata"
+        },
+        {
+          id: "alb-ullash",
+          title: "Ullash 19",
+          tag: "3-Day Alumni & Campus Festival",
+          desc: "A 3-day event arranged for senior alumni of JUST. Live performances by Aftermath, Bay of Bengal, and Karnival were the main attractions of this celebration.",
+          url: "https://1drv.ms/f/c/7d15837eaecd05f1/EjVhUhO_fh5EpKgofpvHvm4BGtJ4bhbbPIfW9J0sqlR_DA?e=qTC6g3",
+          theme: "stage"
+        },
+        {
+          id: "alb-odommo",
+          title: "Odommo 18",
+          tag: "2-Day Grand Alumni Reunion",
+          desc: "A 2-day event arranged for senior alumni of JUST. High-energy performances—headlined by ASHES—took the limelight across the campus.",
+          url: "https://1drv.ms/f/s!AvEFza5-gxV9iQPZPgmawEOKFTMp?e=f1Uo0e",
+          theme: "neon"
+        },
+        {
+          id: "alb-ft22",
+          title: "Field Tour (2.2)",
+          tag: "Mining & Subsurface Tour · 22 – 28 Sept",
+          desc: "A memorable industrial & mining field tour from 22nd September to 28th September—a masterclass filled with adventure, thrill, and practical subsurface engineering insights.",
+          url: "https://1drv.ms/f/c/7d15837eaecd05f1/EtSSKV6XYARFsJ7amlZz6ZcBmijuznWYu4GfWTK0l-bdFw?e=nXkz2E",
+          theme: "mine"
+        }
+      ];
+
+      const SLIDES = [
+        {
+          tag: "Subsurface & Reservoir Engineering",
+          title: "35+ Direct Google Drive Academic Vaults",
+          caption: "Instant 1-click access to textbooks, lecture sheets, past semester finals, and Petrel/ArcGIS installers.",
+          theme: "strata"
+        },
+        {
+          tag: "Field Exploration & Mining",
+          title: "Geological & Industrial Field Expeditions",
+          caption: "Documenting hands-on subsurface training, coal and hard-rock mine visits, and stratigraphic surveys.",
+          theme: "mine"
+        },
+        {
+          tag: "SPE Student Chapter 6291",
+          title: "Connecting JUST Engineers Globally",
+          caption: "Technical workshops, GIS laboratory tutorials, and peer mentorship across all undergraduate levels.",
+          theme: "stage"
+        }
+      ];
+
+      const TRACKS = [
+        {
+          title: "4-Year B.Sc. (Engg.) in Petroleum & Mining Engineering",
+          desc: "Structured across 8 progressive semesters covering Drilling Engineering, Reservoir Simulation, Rock Mechanics, Mine Ventilation, Petroleum Geology, and Geoinformatics.",
+          tags: ["8 Semesters", "OBE Syllabus", "Lab Manuals", "Final Question Bank"],
+          ctaLabel: "Jump to Semester Vault ↓",
+          ctaHref: "#library",
+          external: false
+        },
+        {
+          title: "Undergraduate Research, Field Surveys & Capstone Projects",
+          desc: "Explore departmental capstone theses, hydrogeological assessments, reservoir modeling studies, and GIS spatial analyses conducted by JUST PME students.",
+          tags: ["Reservoir Modeling", "Hydrogeology", "GIS Mapping", "Mine Design"],
+          ctaLabel: "Open Projects Archive ↗",
+          ctaHref: "https://sites.google.com/view/justpmebatch14th/projects",
+          external: true
+        },
+        {
+          title: "Departmental Student Directory & SPE Chapter 6291",
+          desc: "Connect with PME student members, SPE Student Chapter officers, and peer mentors collaborating on technical seminars and industry outreach.",
+          tags: ["JUST SPE 6291", "Student Profiles", "Peer Mentorship", "LinkedIn Network"],
+          ctaLabel: "Open Departmental Directory ↗",
+          ctaHref: "https://sites.google.com/view/justpmebatch14th/family",
+          external: true
+        },
+        {
+          title: "Geoinformatics & Reservoir Simulation Laboratories",
+          desc: "Hands-on software training in ArcGIS 10.8, Petrel 2017, AutoCAD 2018, and Google Earth Pro with step-by-step video lab walkthroughs.",
+          tags: ["ArcGIS 10.8", "Petrel 2017", "AutoCAD 2018", "Google Earth Pro"],
+          ctaLabel: "Open GIS Lab Studio ↓",
+          ctaHref: "#gis-lab",
+          external: false
+        }
+      ];
+
+      const GIS_MODULES = [
+        {
+          id: "gis-01",
+          code: "LAB 01 · GEOREFERENCING",
+          title: "Coordinate Systems & Toposheet Georeferencing",
+          desc: "Assigning spatial coordinates (WGS 1984 / BTM) to scanned geological maps in ArcMap 10.8.",
+          steps: [
+            "Load scanned geological raster map into ArcMap 10.8 Data Frame",
+            "Set Data Frame Coordinate System to WGS 1984 UTM Zone 45N / BTM",
+            "Add 4+ well-distributed Control Points using the Georeferencing toolbar",
+            "Verify Total RMS Error is below 0.005 and click Rectify to save GeoTIFF"
+          ]
+        },
+        {
+          id: "gis-02",
+          code: "LAB 02 · DIGITIZATION",
+          title: "Vector Shapefile Creation & Basin Digitization",
+          desc: "Building point, polyline, and polygon feature classes in ArcCatalog for structural & lithological mapping.",
+          steps: [
+            "Create a Personal Geodatabase (.mdb) and Feature Dataset in ArcCatalog",
+            "Define Polygon (lithology), Polyline (faults/rivers), and Point (boreholes) layers",
+            "Toggle Editor Toolbar → Start Editing and trace features with Snapping enabled",
+            "Populate attribute tables with formation names, depths, and lithology codes"
+          ]
+        },
+        {
+          id: "gis-03",
+          code: "LAB 03 · DEM & HYDROLOGY",
+          title: "DEM Terrain Analysis & Watershed Delineation",
+          desc: "Extracting slope, aspect, contour lines, flow direction, and stream networks from SRTM DEM data.",
+          steps: [
+            "Import SRTM 30m DEM raster and run Spatial Analyst → Hydrology → Fill",
+            "Compute Flow Direction and Flow Accumulation rasters",
+            "Extract stream network using Raster Calculator conditional threshold",
+            "Generate elevation contours and slope gradient maps for field survey planning"
+          ]
+        },
+        {
+          id: "gis-04",
+          code: "LAB 04 · CARTOGRAPHY",
+          title: "Thematic Well-Log Layouts & Print Export",
+          desc: "Designing publication-ready geological maps with scale bars, north arrows, legends, and coordinate grids.",
+          steps: [
+            "Switch from Data View to Layout View and configure A4/A3 page setup",
+            "Apply graduated symbology to borehole depth or porosity attributes",
+            "Insert North Arrow, Dynamic Scale Bar, Legend, and Measured Grid",
+            "Export final cartographic sheet at 300 DPI PDF/PNG for lab submission"
+          ]
+        }
+      ];
+
+      /* Custom Geological & Campus SVG Cover Generator */
+      function getCoverSvg(theme) {
+        if (theme === "strata") {
+          return `<svg viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs>
+            <rect width="400" height="200" fill="url(#g1)"/>
+            <path d="M0,75 Q100,45 200,75 T400,65 L400,200 L0,200 Z" fill="#f59e0b" fill-opacity="0.22"/>
+            <path d="M0,110 Q120,85 240,115 T400,100 L400,200 L0,200 Z" fill="#06b6d4" fill-opacity="0.24"/>
+            <path d="M0,145 Q90,130 210,150 T400,140 L400,200 L0,200 Z" fill="#10b981" fill-opacity="0.28"/>
+            <circle cx="315" cy="48" r="22" fill="#f59e0b" fill-opacity="0.35"/>
+          </svg>`;
+        }
+        if (theme === "mine") {
+          return `<svg viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#09111e"/>
+            <polygon points="0,200 110,65 220,200" fill="#1e293b"/>
+            <polygon points="150,200 280,50 400,200" fill="#0f293a"/>
+            <path d="M0,155 L400,135 L400,200 L0,200 Z" fill="#f59e0b" fill-opacity="0.24"/>
+            <line x1="280" y1="50" x2="280" y2="180" stroke="#06b6d4" stroke-width="2" stroke-dasharray="5,5"/>
+          </svg>`;
+        }
+        if (theme === "stage") {
+          return `<svg viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#0c0f1d"/>
+            <polygon points="80,0 160,200 20,200" fill="#f59e0b" fill-opacity="0.18"/>
+            <polygon points="200,0 290,200 110,200" fill="#06b6d4" fill-opacity="0.2"/>
+            <polygon points="320,0 390,200 240,200" fill="#8b5cf6" fill-opacity="0.2"/>
+            <circle cx="200" cy="150" r="55" fill="none" stroke="#f59e0b" stroke-opacity="0.35" stroke-width="2"/>
+          </svg>`;
+        }
+        return `<svg viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#080d1a"/>
+          <circle cx="110" cy="95" r="70" fill="#8b5cf6" fill-opacity="0.22"/>
+          <circle cx="290" cy="105" r="80" fill="#06b6d4" fill-opacity="0.2"/>
+          <path d="M0,140 Q200,90 400,140" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-opacity="0.5"/>
+        </svg>`;
+      }
+
+      /* Deterministic Visual QR SVG Generator (Zero External Dependencies) */
+      function renderQrSvg(text) {
+        let hash = 2166136261;
+        for (let i = 0; i < text.length; i++) {
+          hash ^= text.charCodeAt(i);
+          hash = Math.imul(hash, 16777619);
+        }
+        const size = 21;
+        const cells = [];
+        function isFinder(r, c) {
+          return (r < 7 && c < 7) || (r < 7 && c >= size - 7) || (r >= size - 7 && c < 7);
+        }
+        function finderPixel(r, c) {
+          const lr = r < 7 ? r : r - (size - 7);
+          const lc = c < 7 ? c : c - (size - 7);
+          if (lr === 0 || lr === 6 || lc === 0 || lc === 6) return true;
+          if (lr >= 2 && lr <= 4 && lc >= 2 && lc <= 4) return true;
+          return false;
+        }
+        let seed = Math.abs(hash) || 1234567;
+        for (let r = 0; r < size; r++) {
+          for (let c = 0; c < size; c++) {
+            let on = false;
+            if (isFinder(r, c)) {
+              on = finderPixel(r, c);
+            } else {
+              seed = (seed * 1664525 + 1013904223) % 4294967296;
+              on = ((seed >>> 16) & 1) === 1;
+            }
+            if (on) {
+              cells.push(`<rect x="${c + 2}" y="${r + 2}" width="1" height="1" fill="#050912"/>`);
+            }
+          }
+        }
+        return `<svg viewBox="0 0 ${size + 4} ${size + 4}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><rect width="${size + 4}" height="${size + 4}" fill="#ffffff"/>${cells.join("")}</svg>`;
+      }
+
+      /* State */
+      let slideIdx = 0;
+      let trackIdx = 0;
+      let selectedYear = "all";
+      let libraryView = "matrix";
+      let searchQuery = "";
+      let activeGisIdx = 0;
+      let customYtId = safeStorage.get("just_pme_yt_id") || "";
+      let checkedSteps = {};
+      try {
+        checkedSteps = JSON.parse(safeStorage.get("just_pme_gis_chk") || "{}");
+      } catch (e) {
+        checkedSteps = {};
+      }
+
+      const defaultPins = [
+        { id: "sem-1.1-books", label: "Sem 1.1 Books", url: SEMESTERS[0].books },
+        { id: "sw-arcgis", label: "ArcGIS 10.8", url: SOFTWARE[0].url },
+        { id: "ut-notes", label: "Exclusive Notes", url: UTILITIES[0].url }
+      ];
+      let pinnedItems = defaultPins;
+      try {
+        const savedPins = safeStorage.get("just_pme_pins");
+        if (savedPins) pinnedItems = JSON.parse(savedPins);
+      } catch (e) {
+        pinnedItems = defaultPins;
+      }
+
+      /* Toast Helper */
+      let toastTimer = null;
+      function showToast(msg) {
+        const el = document.getElementById("toast");
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
+      }
+
+      function copyToClipboard(text, label) {
+        if (!text) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast(label || "Copied to clipboard!");
+          }).catch(() => fallbackCopy(text, label));
+        } else {
+          fallbackCopy(text, label);
+        }
+      }
+
+      function fallbackCopy(text, label) {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          showToast(label || "Copied to clipboard!");
+        } catch (e) {
+          showToast("Copy unavailable in this browser.");
+        }
+        document.body.removeChild(ta);
+      }
+
+      /* Render Pinned Dock */
+      function renderPins() {
+        const box = document.getElementById("pinnedChips");
+        if (!box) return;
+        if (!pinnedItems.length) {
+          box.innerHTML = `<span style="font-size: 0.8rem; color: var(--text-muted);">Click ☆ on any semester folder, software, or album to pin it here for 1-click access.</span>`;
+          return;
+        }
+        box.innerHTML = pinnedItems.map(p => `
+          <span class="pin-chip">
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer">${p.label} ↗</a>
+            <button type="button" data-action="unpin" data-id="${p.id}" title="Unpin">✕</button>
+          </span>
+        `).join("");
+      }
+
+      function togglePin(id, label, url) {
+        const exists = pinnedItems.some(p => p.id === id);
+        if (exists) {
+          pinnedItems = pinnedItems.filter(p => p.id !== id);
+          showToast(`Removed "${label}" from Quick-Access Dock`);
+        } else {
+          pinnedItems.push({ id, label, url });
+          showToast(`Pinned "${label}" to Quick-Access Dock`);
+        }
+        safeStorage.set("just_pme_pins", JSON.stringify(pinnedItems));
+        renderPins();
+        renderLibrary();
+        renderSoftwareAndUtilities();
+        renderGallery();
+      }
+
+      /* Render Carousel */
+      function renderCarousel() {
+        const stage = document.getElementById("carouselStage");
+        const dots = document.getElementById("carouselDots");
+        if (!stage || !dots) return;
+        const s = SLIDES[slideIdx];
+        stage.innerHTML = `
+          <div class="carousel-bg-svg">${getCoverSvg(s.theme)}</div>
+          <div class="carousel-overlay">
+            <span class="carousel-tag">${s.tag}</span>
+            <div class="carousel-title">${s.title}</div>
+            <div class="carousel-caption">${s.caption}</div>
+          </div>
+        `;
+        dots.innerHTML = SLIDES.map((_, i) => `
+          <button type="button" class="c-dot ${i === slideIdx ? "active" : ""}" data-action="goto-slide" data-idx="${i}" aria-label="Slide ${i + 1}"></button>
+        `).join("");
+      }
+
+      /* Render Tracks */
+      function renderTrack() {
+        const panel = document.getElementById("trackPanel");
+        if (!panel) return;
+        const t = TRACKS[trackIdx];
+        document.querySelectorAll(".track-tab").forEach((btn, idx) => {
+          btn.classList.toggle("active", idx === trackIdx);
+        });
+        panel.innerHTML = `
+          <div>
+            <h3>${t.title}</h3>
+            <p>${t.desc}</p>
+            <div class="track-tags">
+              ${t.tags.map(tag => `<span class="t-tag">${tag}</span>`).join("")}
+            </div>
+          </div>
+          <div class="track-actions">
+            <a href="${t.ctaHref}" ${t.external ? 'target="_blank" rel="noopener noreferrer"' : ""} class="btn-primary" style="justify-content: center;">${t.ctaLabel}</a>
+            <a href="#library" class="btn-secondary" style="justify-content: center;">Browse All 8 Semesters</a>
+          </div>
+        `;
+      }
+
+      /* Render Digital Library (Matrix + Category Views) */
+      function renderLibrary() {
+        const matrixEl = document.getElementById("semesterMatrixView");
+        const catEl = document.getElementById("categoryVaultView");
+        if (!matrixEl || !catEl) return;
+
+        const q = searchQuery.trim().toLowerCase();
+        const filteredSems = SEMESTERS.filter(s => {
+          const yearMatch = selectedYear === "all" || s.year === selectedYear;
+          const textMatch = !q || (`semester ${s.code} ${s.label} books sheets papers syllabus`).toLowerCase().includes(q);
+          return yearMatch && textMatch;
+        });
+
+        matrixEl.innerHTML = filteredSems.map(s => {
+          const items = [
+            { key: "books", name: "📚 Books", url: s.books },
+            { key: "sheets", name: "📝 Sheets", url: s.sheets },
+            { key: "papers", name: "📄 Finals", url: s.papers },
+            { key: "syllabus", name: "📋 Syllabus", url: s.syllabus }
+          ];
+          return `
+            <div class="sem-card">
+              <div class="sem-header">
+                <span class="sem-code">Semester ${s.code}</span>
+                <span class="sem-year">${s.label}</span>
+              </div>
+              <div class="sem-links">
+                ${items.map(it => {
+                  if (!it.url) {
+                    return `<div class="vault-btn pending"><span>${it.name}</span><span style="font-size:0.7rem;">Pending</span></div>`;
+                  }
+                  const pinId = `sem-${s.code}-${it.key}`;
+                  const isPinned = pinnedItems.some(p => p.id === pinId);
+                  return `
+                    <div class="vault-btn">
+                      <a href="${it.url}" target="_blank" rel="noopener noreferrer" style="flex:1;">${it.name} ↗</a>
+                      <span class="mini-actions">
+                        <button type="button" class="icon-mini" data-action="copy-text" data-copy="${it.url}" title="Copy Drive Link">⧉</button>
+                        <button type="button" class="icon-mini" data-action="toggle-pin" data-id="${pinId}" data-label="Sem ${s.code} ${it.name.replace(/^[^\w]+/, '')}" data-url="${it.url}" title="Pin">${isPinned ? "★" : "☆"}</button>
+                      </span>
+                    </div>
+                  `;
+                }).join("")}
+              </div>
+            </div>
+          `;
+        }).join("") || `<p style="color: var(--text-muted);">No semester folders match your current filter.</p>`;
+
+        /* Category Vault View */
+        const categories = [
+          { key: "books", title: "📚 Books (Semester-Wise)" },
+          { key: "sheets", title: "📝 Lecture Sheets (Semester-Wise)" },
+          { key: "papers", title: "📄 Semester Final Question Papers" },
+          { key: "syllabus", title: "📋 Official Course Syllabi" }
+        ];
+        catEl.innerHTML = categories.map(cat => `
+          <div class="cat-card">
+            <h3>${cat.title}</h3>
+            <div class="cat-list">
+              ${filteredSems.map(s => {
+                const url = s[cat.key];
+                if (!url) {
+                  return `<div class="vault-btn pending"><span>Semester ${s.code}</span><span>Pending Upload</span></div>`;
+                }
+                return `
+                  <div class="vault-btn">
+                    <a href="${url}" target="_blank" rel="noopener noreferrer" style="flex:1;">Semester ${s.code} — Open Drive ↗</a>
+                    <button type="button" class="icon-mini" data-action="copy-text" data-copy="${url}" title="Copy Drive Link">⧉</button>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        `).join("");
+      }
+
+      /* Render Software & Utilities */
+      function renderSoftwareAndUtilities() {
+        const swEl = document.getElementById("softwareList");
+        const utEl = document.getElementById("utilityList");
+        const q = searchQuery.trim().toLowerCase();
+
+        function buildRows(list, el) {
+          if (!el) return;
+          const filtered = list.filter(item => !q || (`${item.title} ${item.lab}`).toLowerCase().includes(q));
+          el.innerHTML = filtered.map(item => {
+            const isPinned = pinnedItems.some(p => p.id === item.id);
+            return `
+              <div class="resource-row">
+                <div class="res-meta">
+                  <span class="res-title">${item.title}</span>
+                  <span class="res-tag">${item.lab}</span>
+                </div>
+                <div class="res-btns">
+                  <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="btn-open-sm">Open ↗</a>
+                  <button type="button" class="icon-mini" data-action="copy-text" data-copy="${item.url}" title="Copy Link">⧉</button>
+                  <button type="button" class="icon-mini" data-action="toggle-pin" data-id="${item.id}" data-label="${item.title}" data-url="${item.url}" title="Pin">${isPinned ? "★" : "☆"}</button>
+                </div>
+              </div>
+            `;
+          }).join("") || `<p style="color: var(--text-muted); font-size: 0.85rem;">No matching items found.</p>`;
+        }
+
+        buildRows(SOFTWARE, swEl);
+        buildRows(UTILITIES, utEl);
+      }
+
+      /* Render Memory Gallery */
+      function renderGallery() {
+        const grid = document.getElementById("galleryGrid");
+        if (!grid) return;
+        const q = searchQuery.trim().toLowerCase();
+        const filtered = ALBUMS.filter(a => !q || (`${a.title} ${a.tag} ${a.desc}`).toLowerCase().includes(q));
+
+        grid.innerHTML = filtered.map((alb, idx) => {
+          const isPinned = pinnedItems.some(p => p.id === alb.id);
+          return `
+            <article class="album-card">
+              <div class="album-cover" data-action="open-album" data-idx="${idx}">
+                ${getCoverSvg(alb.theme)}
+                <span class="album-badge">${alb.tag}</span>
+              </div>
+              <div class="album-body">
+                <div>
+                  <h3>${alb.title}</h3>
+                  <p>${alb.desc}</p>
+                </div>
+                <div class="album-footer">
+                  <a href="${alb.url}" target="_blank" rel="noopener noreferrer" class="btn-open-sm">Open OneDrive ↗</a>
+                  <div>
+                    <button type="button" class="icon-mini" data-action="open-album" data-idx="${idx}" title="Inspect Album">🔍</button>
+                    <button type="button" class="icon-mini" data-action="copy-text" data-copy="${alb.url}" title="Copy Album Link">⧉</button>
+                    <button type="button" class="icon-mini" data-action="toggle-pin" data-id="${alb.id}" data-label="${alb.title}" data-url="${alb.url}" title="Pin Album">${isPinned ? "★" : "☆"}</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      /* Extract YouTube 11-char ID */
+      function extractYouTubeId(input) {
+        if (!input) return "";
+        const clean = input.trim();
+        if (/^[a-zA-Z0-9_-]{11}$/.test(clean)) return clean;
+        const match = clean.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        return match ? match[1] : "";
+      }
+
+      /* Render Geoinformatics GIS Studio */
+      function renderGisStudio() {
+        const modList = document.getElementById("gisModules");
+        const frame = document.getElementById("gisVideoFrame");
+        const chkBox = document.getElementById("gisChecklist");
+        if (!modList || !frame || !chkBox) return;
+
+        const activeMod = GIS_MODULES[activeGisIdx];
+        modList.innerHTML = GIS_MODULES.map((m, idx) => `
+          <button type="button" class="gis-mod-btn ${idx === activeGisIdx ? "active" : ""}" data-action="select-gis" data-idx="${idx}">
+            <div class="gis-mod-code">${m.code}</div>
+            <div class="gis-mod-title">${m.title}</div>
+            <div class="gis-mod-desc">${m.desc}</div>
+          </button>
+        `).join("");
+
+        if (customYtId) {
+          frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${customYtId}?rel=0" title="${activeMod.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        } else {
+          frame.innerHTML = `
+            <div class="video-placeholder">
+              <div class="sec-kicker">${activeMod.code}</div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">${activeMod.title}</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 44ch; margin-bottom: 14px;">
+                Paste your department's YouTube GIS tutorial URL or 11-character Video ID below to load it directly into this lab theater, or download ArcGIS 10.8 from the Study Vault.
+              </p>
+              <a href="https://drive.google.com/drive/folders/1SPjcG-_5u6rgCVF9Vzi8a6ZAvqUc3nkW?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-open-sm">Download ArcGIS 10.8 (Drive) ↗</a>
+            </div>
+          `;
+        }
+
+        chkBox.innerHTML = `
+          <h4>Lab Workflow Checklist — ${activeMod.code}</h4>
+          ${activeMod.steps.map((step, sIdx) => {
+            const key = `${activeMod.id}-${sIdx}`;
+            const isChecked = !!checkedSteps[key];
+            return `
+              <label class="chk-item">
+                <input type="checkbox" data-chk-key="${key}" ${isChecked ? "checked" : ""} />
+                <span style="${isChecked ? "text-decoration: line-through; opacity: 0.6;" : ""}">${step}</span>
+              </label>
+            `;
+          }).join("")}
+        `;
+      }
+
+      /* Render QR Widgets */
+      function renderQrCodes() {
+        const portalUrl = window.location.href || "https://just-pme-portal.vercel.app";
+        const svg = renderQrSvg(portalUrl);
+        const inlineBox = document.getElementById("inlineQrBox");
+        const modalBox = document.getElementById("modalQrBox");
+        if (inlineBox) inlineBox.innerHTML = svg;
+        if (modalBox) modalBox.innerHTML = svg;
+      }
+
+      /* Global Event Delegation */
+      document.addEventListener("click", function (e) {
+        const target = e.target.closest("[data-action]");
+        if (!target) {
+          if (e.target.classList.contains("modal-backdrop")) {
+            e.target.classList.remove("open");
+          }
+          return;
+        }
+
+        const action = target.getAttribute("data-action");
+
+        if (action === "prev-slide") {
+          slideIdx = (slideIdx - 1 + SLIDES.length) % SLIDES.length;
+          renderCarousel();
+        } else if (action === "next-slide") {
+          slideIdx = (slideIdx + 1) % SLIDES.length;
+          renderCarousel();
+        } else if (action === "goto-slide") {
+          slideIdx = parseInt(target.getAttribute("data-idx"), 10) || 0;
+          renderCarousel();
+        } else if (action === "copy-text") {
+          copyToClipboard(target.getAttribute("data-copy"), "Link copied to clipboard!");
+        } else if (action === "copy-url") {
+          copyToClipboard(window.location.href, "Portal URL copied to clipboard!");
+        } else if (action === "toggle-pin") {
+          togglePin(
+            target.getAttribute("data-id"),
+            target.getAttribute("data-label"),
+            target.getAttribute("data-url")
+          );
+        } else if (action === "unpin") {
+          const id = target.getAttribute("data-id");
+          pinnedItems = pinnedItems.filter(p => p.id !== id);
+          safeStorage.set("just_pme_pins", JSON.stringify(pinnedItems));
+          renderPins();
+          renderLibrary();
+          renderSoftwareAndUtilities();
+          renderGallery();
+          showToast("Unpinned item");
+        } else if (action === "open-album") {
+          const idx = parseInt(target.getAttribute("data-idx"), 10) || 0;
+          const alb = ALBUMS[idx];
+          if (!alb) return;
+          document.getElementById("modalAlbumPoster").innerHTML = getCoverSvg(alb.theme);
+          document.getElementById("modalAlbumTag").textContent = alb.tag;
+          document.getElementById("modalAlbumTitle").textContent = alb.title;
+          document.getElementById("modalAlbumDesc").textContent = alb.desc;
+          document.getElementById("modalAlbumLink").href = alb.url;
+          document.getElementById("modalAlbumCopy").setAttribute("data-copy", alb.url);
+          document.getElementById("albumModal").classList.add("open");
+        } else if (action === "open-qr") {
+          renderQrCodes();
+          document.getElementById("qrModal").classList.add("open");
+        } else if (action === "close-modal") {
+          document.querySelectorAll(".modal-backdrop").forEach(m => m.classList.remove("open"));
+        } else if (action === "select-gis") {
+          activeGisIdx = parseInt(target.getAttribute("data-idx"), 10) || 0;
+          renderGisStudio();
+        } else if (action === "bind-yt") {
+          const inp = document.getElementById("ytCustomInput");
+          const vid = extractYouTubeId(inp ? inp.value : "");
+          if (!vid) {
+            showToast("Please enter a valid YouTube URL or 11-character Video ID.");
+            return;
+          }
+          customYtId = vid;
+          safeStorage.set("just_pme_yt_id", vid);
+          renderGisStudio();
+          showToast("YouTube GIS Tutorial loaded!");
+        }
+      });
+
+      /* Track Tabs */
+      document.getElementById("trackTabs").addEventListener("click", function (e) {
+        const tab = e.target.closest(".track-tab");
+        if (!tab) return;
+        trackIdx = parseInt(tab.getAttribute("data-track"), 10) || 0;
+        renderTrack();
+      });
+
+      /* Year Filters */
+      document.getElementById("yearFilters").addEventListener("click", function (e) {
+        const pill = e.target.closest(".filter-pill");
+        if (!pill) return;
+        selectedYear = pill.getAttribute("data-year");
+        document.querySelectorAll("#yearFilters .filter-pill").forEach(b => b.classList.remove("active"));
+        pill.classList.add("active");
+        renderLibrary();
+      });
+
+      /* View Switcher */
+      document.getElementById("viewSwitch").addEventListener("click", function (e) {
+        const pill = e.target.closest(".filter-pill");
+        if (!pill) return;
+        libraryView = pill.getAttribute("data-view");
+        document.querySelectorAll("#viewSwitch .filter-pill").forEach(b => b.classList.remove("active"));
+        pill.classList.add("active");
+        document.getElementById("semesterMatrixView").classList.toggle("hidden", libraryView !== "matrix");
+        document.getElementById("categoryVaultView").classList.toggle("hidden", libraryView !== "category");
+      });
+
+      /* GIS Checklist Change */
+      document.getElementById("gisChecklist").addEventListener("change", function (e) {
+        if (e.target && e.target.hasAttribute("data-chk-key")) {
+          const key = e.target.getAttribute("data-chk-key");
+          checkedSteps[key] = e.target.checked;
+          safeStorage.set("just_pme_gis_chk", JSON.stringify(checkedSteps));
+          renderGisStudio();
+        }
+      });
+
+      /* Live Search & '/' Shortcut */
+      const searchInput = document.getElementById("globalSearch");
+      searchInput.addEventListener("input", function () {
+        searchQuery = searchInput.value;
+        renderLibrary();
+        renderSoftwareAndUtilities();
+        renderGallery();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "/" && document.activeElement !== searchInput && document.activeElement.tagName !== "INPUT") {
+          e.preventDefault();
+          searchInput.focus();
+        } else if (e.key === "Escape") {
+          document.querySelectorAll(".modal-backdrop").forEach(m => m.classList.remove("open"));
+        }
+      });
+
+      /* Initial Render */
+      renderPins();
+      renderCarousel();
+      renderTrack();
+      renderLibrary();
+      renderSoftwareAndUtilities();
+      renderGallery();
+      renderGisStudio();
+      renderQrCodes();
+    })();
+  </script>
+</body>
+</html>
