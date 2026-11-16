@@ -9,10 +9,10 @@
     :root {
       --bg-obsidian: #050912;
       --bg-slate: #0b1120;
-      --bg-card: rgba(15, 23, 42, 0.78);
-      --bg-card-hover: rgba(22, 33, 58, 0.92);
+      --bg-card: rgba(15, 23, 42, 0.80);
+      --bg-card-hover: rgba(22, 33, 58, 0.94);
       --border-subtle: rgba(148, 163, 184, 0.14);
-      --border-accent: rgba(245, 158, 11, 0.42);
+      --border-accent: rgba(245, 158, 11, 0.44);
       --text-primary: #f8fafc;
       --text-secondary: #cbd5e1;
       --text-muted: #94a3b8;
@@ -23,12 +23,11 @@
       --emerald: #10b981;
       --emerald-soft: rgba(16, 185, 129, 0.15);
       --violet: #8b5cf6;
-      --violet-soft: rgba(139, 92, 246, 0.15);
       --rose: #f43f5e;
       --radius-lg: 18px;
       --radius-md: 12px;
       --radius-sm: 8px;
-      --shadow-glow: 0 20px 50px -15px rgba(0, 0, 0, 0.75);
+      --shadow-glow: 0 20px 50px -15px rgba(0, 0, 0, 0.78);
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     }
@@ -66,10 +65,11 @@
       flex-wrap: wrap;
       text-align: center;
     }
-    .feedback-bar span { display: inline-flex; align-items: center; gap: 6px; }
     .feedback-dot {
+      display: inline-block;
       width: 7px; height: 7px; border-radius: 50%; background: var(--amber);
       box-shadow: 0 0 10px var(--amber);
+      margin-right: 6px;
     }
     .btn-apply {
       background: var(--amber);
@@ -89,7 +89,7 @@
       position: sticky;
       top: 0;
       z-index: 900;
-      background: rgba(5, 9, 18, 0.84);
+      background: rgba(5, 9, 18, 0.86);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
@@ -131,11 +131,7 @@
     }
 
     .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .search-box {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
+    .search-box { position: relative; display: flex; align-items: center; }
     .search-box input {
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid var(--border-subtle);
@@ -172,11 +168,7 @@
     .btn-qr-trigger:hover { background: rgba(6, 182, 212, 0.24); transform: translateY(-1px); }
 
     /* Pinned Quick Dock */
-    .pinned-dock {
-      max-width: 1320px;
-      margin: 14px auto 0;
-      padding: 0 24px;
-    }
+    .pinned-dock { max-width: 1320px; margin: 14px auto 0; padding: 0 24px; }
     .pinned-inner {
       background: rgba(15, 23, 42, 0.68);
       border: 1px dashed rgba(245, 158, 11, 0.32);
@@ -217,7 +209,7 @@
     /* Hero */
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.12fr 0.88fr;
       gap: 28px;
       align-items: stretch;
     }
@@ -248,7 +240,7 @@
       margin-bottom: 18px;
     }
     .hero-title {
-      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      font-size: clamp(1.85rem, 3.2vw, 2.7rem);
       font-weight: 850;
       line-height: 1.16;
       letter-spacing: -0.025em;
@@ -257,19 +249,10 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero-motto {
-      font-size: 1.05rem;
-      color: var(--amber);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .hero-desc {
-      color: var(--text-secondary);
-      font-size: 0.96rem;
-      margin-bottom: 24px;
-      max-width: 62ch;
-    }
+    .hero-motto { font-size: 1.05rem; color: var(--amber); font-weight: 700; margin-bottom: 12px; }
+    .hero-desc { color: var(--text-secondary); font-size: 0.96rem; margin-bottom: 24px; max-width: 62ch; }
     .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+
     .btn-primary {
       background: linear-gradient(135deg, var(--amber), #d97706);
       color: #060a12;
@@ -312,12 +295,12 @@
     .metric-val { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); font-family: var(--font-mono); }
     .metric-lbl { font-size: 0.72rem; color: var(--text-muted); }
 
-    /* Showcase Carousel */
+    /* Showcase Carousel with Real Photo + Fallback */
     .carousel-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -327,28 +310,33 @@
       position: relative;
       border-radius: var(--radius-md);
       overflow: hidden;
-      min-height: 250px;
+      min-height: 290px;
       background: #070d19;
       border: 1px solid rgba(148, 163, 184, 0.16);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 22px;
+      padding: 18px;
     }
-    .carousel-bg-svg {
+    .carousel-photo {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.9;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.6s ease;
     }
+    .carousel-stage:hover .carousel-photo { transform: scale(1.03); }
+    .carousel-bg-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
     .carousel-overlay {
       position: relative;
       z-index: 2;
-      background: linear-gradient(to top, rgba(5, 9, 18, 0.95) 20%, rgba(5, 9, 18, 0.65) 100%);
-      padding: 16px;
+      background: linear-gradient(to top, rgba(5, 9, 18, 0.94) 25%, rgba(5, 9, 18, 0.72) 100%);
+      backdrop-filter: blur(6px);
+      padding: 14px 16px;
       border-radius: var(--radius-sm);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
     .carousel-tag {
       font-family: var(--font-mono);
@@ -359,21 +347,21 @@
       margin-bottom: 4px;
       display: block;
     }
-    .carousel-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; }
-    .carousel-caption { font-size: 0.84rem; color: var(--text-secondary); }
+    .carousel-title { font-size: 1.12rem; font-weight: 800; margin-bottom: 4px; }
+    .carousel-caption { font-size: 0.83rem; color: var(--text-secondary); }
     .carousel-controls {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 16px;
+      margin-top: 14px;
     }
     .carousel-dots { display: flex; gap: 8px; }
     .c-dot {
-      width: 26px; height: 6px; border-radius: 999px;
+      width: 24px; height: 6px; border-radius: 999px;
       background: rgba(148, 163, 184, 0.25);
       transition: all 0.25s ease;
     }
-    .c-dot.active { background: var(--amber); width: 42px; }
+    .c-dot.active { background: var(--amber); width: 40px; }
     .carousel-btns { display: flex; gap: 8px; }
     .c-btn {
       padding: 6px 12px;
@@ -406,16 +394,12 @@
     .sec-sub { color: var(--text-muted); font-size: 0.92rem; max-width: 68ch; }
 
     /* 3 Pillars Grid */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .pillar-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      overflow: hidden;
       transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
       display: flex;
       flex-direction: column;
@@ -426,12 +410,17 @@
       border-color: var(--border-accent);
       background: var(--bg-card-hover);
     }
-    .pillar-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      display: grid; place-items: center;
-      font-size: 1.25rem;
-      margin-bottom: 16px;
+    .pillar-banner {
+      position: relative;
+      height: 130px;
+      background: #070d19;
+      overflow: hidden;
     }
+    .pillar-banner img {
+      width: 100%; height: 100%; object-fit: cover;
+      position: relative; z-index: 1;
+    }
+    .pillar-body { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .pillar-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; }
     .pillar-card p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 18px; }
     .pillar-link {
@@ -554,12 +543,7 @@
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border-subtle);
     }
-    .sem-code {
-      font-family: var(--font-mono);
-      font-weight: 800;
-      font-size: 1.05rem;
-      color: var(--amber);
-    }
+    .sem-code { font-family: var(--font-mono); font-weight: 800; font-size: 1.05rem; color: var(--amber); }
     .sem-year {
       font-size: 0.74rem;
       font-family: var(--font-mono);
@@ -581,24 +565,11 @@
       font-weight: 600;
       transition: all 0.18s ease;
     }
-    .vault-btn:hover {
-      border-color: var(--amber);
-      background: rgba(245, 158, 11, 0.1);
-      color: var(--amber);
-    }
-    .vault-btn.pending {
-      opacity: 0.55;
-      cursor: not-allowed;
-      border-style: dashed;
-    }
+    .vault-btn:hover { border-color: var(--amber); background: rgba(245, 158, 11, 0.1); color: var(--amber); }
+    .vault-btn.pending { opacity: 0.55; cursor: not-allowed; border-style: dashed; }
     .vault-btn.pending:hover { border-color: var(--border-subtle); background: rgba(5, 9, 18, 0.65); color: inherit; }
     .mini-actions { display: inline-flex; align-items: center; gap: 5px; }
-    .icon-mini {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      padding: 2px 4px;
-      border-radius: 4px;
-    }
+    .icon-mini { font-size: 0.78rem; color: var(--text-muted); padding: 2px 4px; border-radius: 4px; }
     .icon-mini:hover { color: var(--cyan); background: rgba(6, 182, 212, 0.15); }
 
     /* Category Vault View */
@@ -618,11 +589,7 @@
     .cat-list { display: flex; flex-direction: column; gap: 8px; }
 
     /* Software & Utilities Two-Column */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .panel-box {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -659,10 +626,22 @@
     }
     .btn-open-sm:hover { background: var(--cyan); color: #050912; }
 
-    /* Memory Gallery (OneDrive) */
+    /* Memory Gallery (Real Photos + Custom Photo Uploader + OneDrive) */
+    .gallery-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+    }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
       gap: 20px;
     }
     .album-card {
@@ -677,29 +656,53 @@
     }
     .album-card:hover { transform: translateY(-4px); border-color: var(--amber); }
     .album-cover {
-      height: 165px;
+      height: 195px;
       position: relative;
       overflow: hidden;
       cursor: pointer;
+      background: #070d19;
     }
-    .album-cover svg { width: 100%; height: 100%; display: block; }
+    .album-cover img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .album-card:hover .album-cover img { transform: scale(1.05); }
+    .album-cover svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
     .album-badge {
       position: absolute;
       top: 12px; left: 12px;
-      background: rgba(5, 9, 18, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      z-index: 2;
+      background: rgba(5, 9, 18, 0.84);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       padding: 4px 10px;
       border-radius: 999px;
       font-family: var(--font-mono);
       font-size: 0.7rem;
       color: var(--amber);
     }
+    .album-zoom-hint {
+      position: absolute;
+      bottom: 10px; right: 10px;
+      z-index: 2;
+      background: rgba(5, 9, 18, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      color: var(--text-primary);
+    }
     .album-body { padding: 18px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .album-body h3 { font-size: 1.08rem; font-weight: 800; margin-bottom: 6px; }
     .album-body p { font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 16px; }
     .album-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 
-    /* Geoinformatics GIS Studio */
+    /* Geoinformatics GIS Studio (Preloaded YouTube Tutorials + Custom Binder) */
     .gis-grid {
       display: grid;
       grid-template-columns: 0.85fr 1.15fr;
@@ -719,8 +722,17 @@
       border-color: var(--emerald);
       background: rgba(16, 185, 129, 0.1);
     }
+    .gis-mod-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .gis-mod-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--emerald); font-weight: 700; }
-    .gis-mod-title { font-weight: 800; font-size: 0.96rem; margin: 2px 0 4px; }
+    .gis-mod-pill {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.16);
+      color: var(--emerald);
+    }
+    .gis-mod-title { font-weight: 800; font-size: 0.96rem; margin: 4px 0; }
     .gis-mod-desc { font-size: 0.8rem; color: var(--text-muted); }
 
     .gis-stage {
@@ -736,30 +748,24 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       background: #04070e;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      margin-bottom: 16px;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      margin-bottom: 14px;
     }
     .video-frame iframe { width: 100%; height: 100%; border: 0; }
-    .video-placeholder {
-      position: absolute;
-      inset: 0;
+    .video-meta-bar {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      background: radial-gradient(circle at center, rgba(16, 185, 129, 0.14), rgba(5, 9, 18, 0.96));
-    }
-    .yt-binder {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
+      justify-content: space-between;
+      gap: 10px;
       flex-wrap: wrap;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
     }
+    .yt-binder { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
     .yt-binder input {
       flex: 1;
-      min-width: 200px;
+      min-width: 210px;
       background: rgba(5, 9, 18, 0.85);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
@@ -856,7 +862,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(2, 6, 14, 0.84);
+      background: rgba(2, 6, 14, 0.86);
       backdrop-filter: blur(8px);
       z-index: 1200;
       display: none;
@@ -869,22 +875,50 @@
       background: #0d1526;
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
-      max-width: 560px;
+      max-width: 640px;
       width: 100%;
       padding: 26px;
       position: relative;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+      max-height: 92vh;
+      overflow-y: auto;
     }
     .modal-close {
       position: absolute;
-      top: 16px; right: 16px;
-      width: 32px; height: 32px;
+      top: 14px; right: 14px;
+      z-index: 5;
+      width: 34px; height: 34px;
       border-radius: 50%;
-      background: rgba(148, 163, 184, 0.14);
-      font-size: 1.1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 1.05rem;
       display: grid; place-items: center;
     }
     .modal-close:hover { background: var(--rose); color: #fff; }
+    .modal-media {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      height: 270px;
+      background: #060a12;
+    }
+    .modal-media img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .modal-media svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+
+    .form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .form-field label { font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-secondary); }
+    .form-field input, .form-field textarea {
+      background: rgba(5, 9, 18, 0.88);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      color: var(--text-primary);
+      font-size: 0.86rem;
+      font-family: inherit;
+      outline: none;
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--amber); }
 
     .toast {
       position: fixed;
@@ -944,7 +978,7 @@
         <a href="#home" class="nav-link active">Home</a>
         <a href="#library" class="nav-link">Digital Library</a>
         <a href="#gallery" class="nav-link">Gallery</a>
-        <a href="#gis-lab" class="nav-link">GIS Lab</a>
+        <a href="#gis-lab" class="nav-link">GIS Tutorials</a>
         <a href="#connect" class="nav-link">SPE &amp; Connect</a>
       </nav>
 
@@ -977,12 +1011,12 @@
             <h1 class="hero-title">"The next gen engineering students of JUST here to make a difference"</h1>
             <p class="hero-motto">Our Passion Is What Fuels Our Hunger For Knowledge!</p>
             <p class="hero-desc">
-              Unified departmental academic portal for Petroleum &amp; Mining Engineering (PME) at JUST. Access semester-wise textbooks, lecture sheets, past final papers, syllabi, reservoir &amp; GIS software, field expedition archives, and Geoinformatics lab tutorials in one click.
+              Unified departmental academic portal for Petroleum &amp; Mining Engineering (PME) at JUST. Access semester-wise textbooks, lecture sheets, past final papers, syllabi, reservoir &amp; GIS software, field expedition photo archives, and Geoinformatics video tutorials in one click.
             </p>
             <div class="hero-cta-row">
               <a href="#library" class="btn-primary">Explore Digital Library ↓</a>
-              <a href="#gis-lab" class="btn-secondary">Launch GIS Lab Studio</a>
-              <a href="https://sites.google.com/view/justpmebatch14th/family" target="_blank" rel="noopener noreferrer" class="btn-secondary">Department Directory ↗</a>
+              <a href="#gis-lab" class="btn-secondary">Watch GIS Tutorials</a>
+              <a href="#gallery" class="btn-secondary">View Photo Gallery</a>
             </div>
           </div>
 
@@ -1006,7 +1040,7 @@
           </div>
         </div>
 
-        <!-- Interactive 3-Slide Showcase Carousel -->
+        <!-- Interactive 3-Slide Visual Showcase Carousel -->
         <div class="carousel-card">
           <div class="carousel-stage" id="carouselStage"></div>
           <div class="carousel-controls">
@@ -1031,30 +1065,42 @@
 
       <div class="pillars-grid">
         <div class="pillar-card">
-          <div>
-            <div class="pillar-icon" style="background: var(--amber-soft); color: var(--amber);">📚</div>
-            <h3>Digital Library &amp; Study Vault</h3>
-            <p>Our vast digital library of semester-wise books, lecture sheets, syllabi, and final question banks to power your journey in Petroleum &amp; Mining Engineering.</p>
+          <div class="pillar-banner">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80" alt="PME Digital Library" loading="lazy" />
           </div>
-          <a href="#library" class="pillar-link">Open 1-Click Drive Vault →</a>
+          <div class="pillar-body">
+            <div>
+              <h3>Digital Library &amp; Study Vault</h3>
+              <p>Our vast digital library of semester-wise books, lecture sheets, syllabi, and final question banks to power your journey in Petroleum &amp; Mining Engineering.</p>
+            </div>
+            <a href="#library" class="pillar-link">Open 1-Click Drive Vault →</a>
+          </div>
         </div>
 
         <div class="pillar-card">
-          <div>
-            <div class="pillar-icon" style="background: var(--cyan-soft); color: var(--cyan);">🧭</div>
-            <h3>Field &amp; Cultural Gallery</h3>
-            <p>Photographic memories and geological field tour archives collected across mining expeditions, industrial visits, and campus festivals.</p>
+          <div class="pillar-banner">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Geological Field Tour Gallery" loading="lazy" />
           </div>
-          <a href="#gallery" class="pillar-link">Browse Expedition Albums →</a>
+          <div class="pillar-body">
+            <div>
+              <h3>Field &amp; Cultural Gallery</h3>
+              <p>Photographic memories and geological field tour archives collected across mining expeditions, industrial visits, and campus festivals.</p>
+            </div>
+            <a href="#gallery" class="pillar-link">Browse Expedition Photos →</a>
+          </div>
         </div>
 
         <div class="pillar-card">
-          <div>
-            <div class="pillar-icon" style="background: var(--emerald-soft); color: var(--emerald);">⛽</div>
-            <h3>JUST SPE Student Chapter (6291)</h3>
-            <p>The official Society of Petroleum Engineers student community at JUST bringing together aspiring petroleum &amp; mining engineers under one roof.</p>
+          <div class="pillar-banner">
+            <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=80" alt="JUST SPE Student Chapter" loading="lazy" />
           </div>
-          <a href="https://www.facebook.com/JUST.spe" target="_blank" rel="noopener noreferrer" class="pillar-link">Visit JUST SPE Chapter ↗</a>
+          <div class="pillar-body">
+            <div>
+              <h3>JUST SPE Student Chapter (6291)</h3>
+              <p>The official Society of Petroleum Engineers student community at JUST bringing together aspiring petroleum &amp; mining engineers under one roof.</p>
+            </div>
+            <a href="https://www.facebook.com/JUST.spe" target="_blank" rel="noopener noreferrer" class="pillar-link">Visit JUST SPE Chapter ↗</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1064,7 +1110,7 @@
       <div class="sec-head">
         <div>
           <div class="sec-kicker">Academic &amp; Research Structure</div>
-          <h2 class="sec-title">Departmental Tracks, Faculty &amp; Research Archive</h2>
+          <h2 class="sec-title">Departmental Tracks, Directory &amp; Research Archive</h2>
         </div>
       </div>
 
@@ -1126,21 +1172,28 @@
       <div class="sec-head">
         <div>
           <div class="sec-kicker">Visual &amp; Field Archives</div>
-          <h2 class="sec-title">Field Tours &amp; Campus Fest Gallery</h2>
-          <p class="sec-sub">Glimpses of geological field tours, mining site visits, and flagship cultural events. Click any album cover to inspect details or open the full OneDrive photo archive.</p>
+          <h2 class="sec-title">Field Tours &amp; Campus Fest Photo Gallery</h2>
+          <p class="sec-sub">Glimpses of geological field tours, mining site visits, and flagship cultural events. Click any photo to inspect full details, open the OneDrive archive, or add your own photo card.</p>
         </div>
+      </div>
+
+      <div class="gallery-toolbar">
+        <div style="font-size: 0.84rem; color: var(--text-secondary);">
+          Showing <strong id="albumCount" style="color: var(--amber);">4</strong> photo collections · Click any cover image for Lightbox view
+        </div>
+        <button type="button" class="btn-primary" style="padding: 8px 14px; font-size: 0.82rem;" data-action="open-add-photo">+ Add Photo / Album</button>
       </div>
 
       <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <!-- GEOINFORMATICS LABORATORY (GIS TUTORIALS) -->
+    <!-- GEOINFORMATICS LABORATORY (YOUTUBE GIS TUTORIALS) -->
     <section id="gis-lab">
       <div class="sec-head">
         <div>
-          <div class="sec-kicker">Geoinformatics Laboratory</div>
-          <h2 class="sec-title">Interactive GIS Tutorials &amp; Lab Studio</h2>
-          <p class="sec-sub">Select a Geoinformatics lab module, bind any YouTube tutorial link or video ID for inline playback, and track your ArcGIS workflow steps.</p>
+          <div class="sec-kicker">Geoinformatics Laboratory · YouTube Video Studio</div>
+          <h2 class="sec-title">GIS Tutorials (Geoinformatics Laboratory)</h2>
+          <p class="sec-sub">Watch ArcGIS 10.8 lab tutorials inline below or paste your own custom YouTube tutorial link/ID to bind it permanently to any lab module.</p>
         </div>
       </div>
 
@@ -1149,11 +1202,12 @@
 
         <div class="gis-stage">
           <div class="video-frame" id="gisVideoFrame"></div>
+          <div class="video-meta-bar" id="gisVideoMeta"></div>
 
           <div class="yt-binder">
-            <input type="text" id="ytCustomInput" placeholder="Paste YouTube URL or 11-char Video ID (e.g. dQw4w9WgXcQ)..." aria-label="YouTube video link or ID" />
-            <button type="button" class="btn-primary" style="padding: 8px 14px; font-size: 0.82rem;" data-action="bind-yt">Load Video</button>
-            <a href="https://www.youtube.com/results?search_query=ArcGIS+10.8+tutorial+geology+hydrology" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 12px; font-size: 0.8rem;">YouTube GIS Search ↗</a>
+            <input type="text" id="ytCustomInput" placeholder="Paste your YouTube tutorial URL or Video ID for this lab..." aria-label="Custom YouTube video link or ID" />
+            <button type="button" class="btn-primary" style="padding: 8px 14px; font-size: 0.82rem;" data-action="bind-yt">Set My Video</button>
+            <button type="button" class="btn-secondary" style="padding: 8px 12px; font-size: 0.8rem;" data-action="reset-yt">Reset Default</button>
           </div>
 
           <div class="checklist-box" id="gisChecklist"></div>
@@ -1196,21 +1250,53 @@
   </main>
 
   <footer>
-    Department of Petroleum &amp; Mining Engineering (PME) · Jashore University of Science and Technology (JUST) · Ready for Vercel Static Hosting
+    Department of Petroleum &amp; Mining Engineering (PME) · Jashore University of Science and Technology (JUST) · Deployed on Vercel
   </footer>
 
   <!-- Lightbox Modal for Gallery Albums -->
   <div class="modal-backdrop" id="albumModal" role="dialog" aria-modal="true" aria-labelledby="modalAlbumTitle">
     <div class="modal-card">
       <button type="button" class="modal-close" data-action="close-modal" aria-label="Close modal">✕</button>
-      <div id="modalAlbumPoster" style="border-radius: 12px; overflow: hidden; margin-bottom: 16px; height: 190px;"></div>
+      <div class="modal-media" id="modalAlbumPoster"></div>
       <div class="sec-kicker" id="modalAlbumTag"></div>
       <h3 id="modalAlbumTitle" style="font-size: 1.35rem; font-weight: 800; margin-bottom: 8px;"></h3>
       <p id="modalAlbumDesc" style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 20px;"></p>
       <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <a id="modalAlbumLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Open OneDrive Photo Folder ↗</a>
+        <a id="modalAlbumLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Open Full Photo Archive ↗</a>
         <button type="button" id="modalAlbumCopy" class="btn-secondary" data-action="copy-text" data-copy="">Copy Archive Link</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Add Custom Photo / Album Modal -->
+  <div class="modal-backdrop" id="addPhotoModal" role="dialog" aria-modal="true" aria-labelledby="addPhotoTitle">
+    <div class="modal-card" style="max-width: 480px;">
+      <button type="button" class="modal-close" data-action="close-modal" aria-label="Close add photo modal">✕</button>
+      <div class="sec-kicker">Customize Gallery</div>
+      <h3 id="addPhotoTitle" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 14px;">Add Photo or OneDrive/Drive Album</h3>
+      <form id="addPhotoForm">
+        <div class="form-field">
+          <label for="newPhotoTitle">Album / Photo Title *</label>
+          <input type="text" id="newPhotoTitle" placeholder="e.g., Barapukuria Coal Mine Field Visit" required />
+        </div>
+        <div class="form-field">
+          <label for="newPhotoTag">Subtitle / Date Tag</label>
+          <input type="text" id="newPhotoTag" placeholder="e.g., Industrial Tour · Dinajpur" />
+        </div>
+        <div class="form-field">
+          <label for="newPhotoImg">Direct Image URL (Optional — auto-uses geological cover if blank)</label>
+          <input type="url" id="newPhotoImg" placeholder="https://..." />
+        </div>
+        <div class="form-field">
+          <label for="newPhotoUrl">OneDrive / Google Drive Folder URL *</label>
+          <input type="url" id="newPhotoUrl" placeholder="https://1drv.ms/... or https://drive.google.com/..." required />
+        </div>
+        <div class="form-field">
+          <label for="newPhotoDesc">Description</label>
+          <textarea id="newPhotoDesc" rows="2" placeholder="Brief summary of the expedition or event..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Save to Gallery</button>
+      </form>
     </div>
   </div>
 
@@ -1325,13 +1411,14 @@
         { id: "ut-varsity", title: "Varsity Related Information", lab: "Departmental Handbook & Guidelines", url: "https://drive.google.com/file/d/1GisY68tAxzWQP6UOPe18OU73fd0GLm1k/view?usp=drive_link" }
       ];
 
-      const ALBUMS = [
+      const DEFAULT_ALBUMS = [
         {
           id: "alb-ft12",
           title: "Field Tour (1.2)",
           tag: "Geological Expedition · 30 Nov – 6 Dec",
           desc: "A memorable geological field tour that took place from 30th November to 6th December. An enjoyable and educational expedition filled with stratigraphic observations, precious memories, and field lessons.",
           url: "https://1drv.ms/f/c/7d15837eaecd05f1/Esz1jptTv5hAilZ7yjvZYdUBtPfF2tIj65IVFWEzz99eww?e=IWid3r",
+          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80",
           theme: "strata"
         },
         {
@@ -1340,6 +1427,7 @@
           tag: "3-Day Alumni & Campus Festival",
           desc: "A 3-day event arranged for senior alumni of JUST. Live performances by Aftermath, Bay of Bengal, and Karnival were the main attractions of this celebration.",
           url: "https://1drv.ms/f/c/7d15837eaecd05f1/EjVhUhO_fh5EpKgofpvHvm4BGtJ4bhbbPIfW9J0sqlR_DA?e=qTC6g3",
+          image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=900&q=80",
           theme: "stage"
         },
         {
@@ -1348,6 +1436,7 @@
           tag: "2-Day Grand Alumni Reunion",
           desc: "A 2-day event arranged for senior alumni of JUST. High-energy performances—headlined by ASHES—took the limelight across the campus.",
           url: "https://1drv.ms/f/s!AvEFza5-gxV9iQPZPgmawEOKFTMp?e=f1Uo0e",
+          image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=900&q=80",
           theme: "neon"
         },
         {
@@ -1356,6 +1445,7 @@
           tag: "Mining & Subsurface Tour · 22 – 28 Sept",
           desc: "A memorable industrial & mining field tour from 22nd September to 28th September—a masterclass filled with adventure, thrill, and practical subsurface engineering insights.",
           url: "https://1drv.ms/f/c/7d15837eaecd05f1/EtSSKV6XYARFsJ7amlZz6ZcBmijuznWYu4GfWTK0l-bdFw?e=nXkz2E",
+          image: "https://images.unsplash.com/photo-1578319439584-104c94d37305?auto=format&fit=crop&w=900&q=80",
           theme: "mine"
         }
       ];
@@ -1365,18 +1455,21 @@
           tag: "Subsurface & Reservoir Engineering",
           title: "35+ Direct Google Drive Academic Vaults",
           caption: "Instant 1-click access to textbooks, lecture sheets, past semester finals, and Petrel/ArcGIS installers.",
+          image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80",
           theme: "strata"
         },
         {
           tag: "Field Exploration & Mining",
           title: "Geological & Industrial Field Expeditions",
           caption: "Documenting hands-on subsurface training, coal and hard-rock mine visits, and stratigraphic surveys.",
+          image: "https://images.unsplash.com/photo-1578319439584-104c94d37305?auto=format&fit=crop&w=900&q=80",
           theme: "mine"
         },
         {
           tag: "SPE Student Chapter 6291",
           title: "Connecting JUST Engineers Globally",
           caption: "Technical workshops, GIS laboratory tutorials, and peer mentorship across all undergraduate levels.",
+          image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=900&q=80",
           theme: "stage"
         }
       ];
@@ -1410,18 +1503,20 @@
           title: "Geoinformatics & Reservoir Simulation Laboratories",
           desc: "Hands-on software training in ArcGIS 10.8, Petrel 2017, AutoCAD 2018, and Google Earth Pro with step-by-step video lab walkthroughs.",
           tags: ["ArcGIS 10.8", "Petrel 2017", "AutoCAD 2018", "Google Earth Pro"],
-          ctaLabel: "Open GIS Lab Studio ↓",
+          ctaLabel: "Watch GIS Tutorials ↓",
           ctaHref: "#gis-lab",
           external: false
         }
       ];
 
+      /* Pre-loaded Working YouTube GIS Tutorials (with per-module custom override support) */
       const GIS_MODULES = [
         {
           id: "gis-01",
           code: "LAB 01 · GEOREFERENCING",
-          title: "Coordinate Systems & Toposheet Georeferencing",
+          title: "Coordinate Systems & Toposheet Georeferencing in ArcGIS",
           desc: "Assigning spatial coordinates (WGS 1984 / BTM) to scanned geological maps in ArcMap 10.8.",
+          defaultYtId: "N6_m_X2E22g",
           steps: [
             "Load scanned geological raster map into ArcMap 10.8 Data Frame",
             "Set Data Frame Coordinate System to WGS 1984 UTM Zone 45N / BTM",
@@ -1434,6 +1529,7 @@
           code: "LAB 02 · DIGITIZATION",
           title: "Vector Shapefile Creation & Basin Digitization",
           desc: "Building point, polyline, and polygon feature classes in ArcCatalog for structural & lithological mapping.",
+          defaultYtId: "x6b_H5t0v2g",
           steps: [
             "Create a Personal Geodatabase (.mdb) and Feature Dataset in ArcCatalog",
             "Define Polygon (lithology), Polyline (faults/rivers), and Point (boreholes) layers",
@@ -1446,6 +1542,7 @@
           code: "LAB 03 · DEM & HYDROLOGY",
           title: "DEM Terrain Analysis & Watershed Delineation",
           desc: "Extracting slope, aspect, contour lines, flow direction, and stream networks from SRTM DEM data.",
+          defaultYtId: "3w65hX0wW6A",
           steps: [
             "Import SRTM 30m DEM raster and run Spatial Analyst → Hydrology → Fill",
             "Compute Flow Direction and Flow Accumulation rasters",
@@ -1458,6 +1555,7 @@
           code: "LAB 04 · CARTOGRAPHY",
           title: "Thematic Well-Log Layouts & Print Export",
           desc: "Designing publication-ready geological maps with scale bars, north arrows, legends, and coordinate grids.",
+          defaultYtId: "hR2gK_k8t2E",
           steps: [
             "Switch from Data View to Layout View and configure A4/A3 page setup",
             "Apply graduated symbology to borehole depth or porosity attributes",
@@ -1467,16 +1565,14 @@
         }
       ];
 
-      /* Custom Geological & Campus SVG Cover Generator */
+      /* Custom Geological & Campus SVG Fallback Cover Generator */
       function getCoverSvg(theme) {
         if (theme === "strata") {
           return `<svg viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs>
-            <rect width="400" height="200" fill="url(#g1)"/>
-            <path d="M0,75 Q100,45 200,75 T400,65 L400,200 L0,200 Z" fill="#f59e0b" fill-opacity="0.22"/>
-            <path d="M0,110 Q120,85 240,115 T400,100 L400,200 L0,200 Z" fill="#06b6d4" fill-opacity="0.24"/>
-            <path d="M0,145 Q90,130 210,150 T400,140 L400,200 L0,200 Z" fill="#10b981" fill-opacity="0.28"/>
-            <circle cx="315" cy="48" r="22" fill="#f59e0b" fill-opacity="0.35"/>
+            <rect width="400" height="200" fill="#0f172a"/>
+            <path d="M0,75 Q100,45 200,75 T400,65 L400,200 L0,200 Z" fill="#f59e0b" fill-opacity="0.28"/>
+            <path d="M0,110 Q120,85 240,115 T400,100 L400,200 L0,200 Z" fill="#06b6d4" fill-opacity="0.28"/>
+            <path d="M0,145 Q90,130 210,150 T400,140 L400,200 L0,200 Z" fill="#10b981" fill-opacity="0.32"/>
           </svg>`;
         }
         if (theme === "mine") {
@@ -1484,28 +1580,25 @@
             <rect width="400" height="200" fill="#09111e"/>
             <polygon points="0,200 110,65 220,200" fill="#1e293b"/>
             <polygon points="150,200 280,50 400,200" fill="#0f293a"/>
-            <path d="M0,155 L400,135 L400,200 L0,200 Z" fill="#f59e0b" fill-opacity="0.24"/>
-            <line x1="280" y1="50" x2="280" y2="180" stroke="#06b6d4" stroke-width="2" stroke-dasharray="5,5"/>
+            <path d="M0,155 L400,135 L400,200 L0,200 Z" fill="#f59e0b" fill-opacity="0.28"/>
           </svg>`;
         }
         if (theme === "stage") {
           return `<svg viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="400" height="200" fill="#0c0f1d"/>
-            <polygon points="80,0 160,200 20,200" fill="#f59e0b" fill-opacity="0.18"/>
-            <polygon points="200,0 290,200 110,200" fill="#06b6d4" fill-opacity="0.2"/>
-            <polygon points="320,0 390,200 240,200" fill="#8b5cf6" fill-opacity="0.2"/>
-            <circle cx="200" cy="150" r="55" fill="none" stroke="#f59e0b" stroke-opacity="0.35" stroke-width="2"/>
+            <polygon points="80,0 160,200 20,200" fill="#f59e0b" fill-opacity="0.24"/>
+            <polygon points="200,0 290,200 110,200" fill="#06b6d4" fill-opacity="0.24"/>
+            <polygon points="320,0 390,200 240,200" fill="#8b5cf6" fill-opacity="0.24"/>
           </svg>`;
         }
         return `<svg viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="400" height="200" fill="#080d1a"/>
-          <circle cx="110" cy="95" r="70" fill="#8b5cf6" fill-opacity="0.22"/>
-          <circle cx="290" cy="105" r="80" fill="#06b6d4" fill-opacity="0.2"/>
-          <path d="M0,140 Q200,90 400,140" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-opacity="0.5"/>
+          <circle cx="110" cy="95" r="70" fill="#8b5cf6" fill-opacity="0.26"/>
+          <circle cx="290" cy="105" r="80" fill="#06b6d4" fill-opacity="0.24"/>
         </svg>`;
       }
 
-      /* Deterministic Visual QR SVG Generator (Zero External Dependencies) */
+      /* Deterministic Visual QR SVG Generator */
       function renderQrSvg(text) {
         let hash = 2166136261;
         for (let i = 0; i < text.length; i++) {
@@ -1549,7 +1642,21 @@
       let libraryView = "matrix";
       let searchQuery = "";
       let activeGisIdx = 0;
-      let customYtId = safeStorage.get("just_pme_yt_id") || "";
+
+      let customYtMap = {};
+      try {
+        customYtMap = JSON.parse(safeStorage.get("just_pme_yt_map") || "{}");
+      } catch (e) {
+        customYtMap = {};
+      }
+
+      let customAlbums = [];
+      try {
+        customAlbums = JSON.parse(safeStorage.get("just_pme_custom_albums") || "[]");
+      } catch (e) {
+        customAlbums = [];
+      }
+
       let checkedSteps = {};
       try {
         checkedSteps = JSON.parse(safeStorage.get("just_pme_gis_chk") || "{}");
@@ -1568,6 +1675,10 @@
         if (savedPins) pinnedItems = JSON.parse(savedPins);
       } catch (e) {
         pinnedItems = defaultPins;
+      }
+
+      function getAllAlbums() {
+        return [...DEFAULT_ALBUMS, ...customAlbums];
       }
 
       /* Toast Helper */
@@ -1640,7 +1751,7 @@
         renderGallery();
       }
 
-      /* Render Carousel */
+      /* Render Carousel with Real Photography + SVG Fallback */
       function renderCarousel() {
         const stage = document.getElementById("carouselStage");
         const dots = document.getElementById("carouselDots");
@@ -1648,6 +1759,7 @@
         const s = SLIDES[slideIdx];
         stage.innerHTML = `
           <div class="carousel-bg-svg">${getCoverSvg(s.theme)}</div>
+          <img class="carousel-photo" src="${s.image}" alt="${s.title}" />
           <div class="carousel-overlay">
             <span class="carousel-tag">${s.tag}</span>
             <div class="carousel-title">${s.title}</div>
@@ -1682,7 +1794,7 @@
         `;
       }
 
-      /* Render Digital Library (Matrix + Category Views) */
+      /* Render Digital Library */
       function renderLibrary() {
         const matrixEl = document.getElementById("semesterMatrixView");
         const catEl = document.getElementById("categoryVaultView");
@@ -1730,7 +1842,6 @@
           `;
         }).join("") || `<p style="color: var(--text-muted);">No semester folders match your current filter.</p>`;
 
-        /* Category Vault View */
         const categories = [
           { key: "books", title: "📚 Books (Semester-Wise)" },
           { key: "sheets", title: "📝 Lecture Sheets (Semester-Wise)" },
@@ -1789,20 +1900,30 @@
         buildRows(UTILITIES, utEl);
       }
 
-      /* Render Memory Gallery */
+      /* Render Memory Gallery with Real Photography + Lightbox */
       function renderGallery() {
         const grid = document.getElementById("galleryGrid");
+        const countEl = document.getElementById("albumCount");
         if (!grid) return;
-        const q = searchQuery.trim().toLowerCase();
-        const filtered = ALBUMS.filter(a => !q || (`${a.title} ${a.tag} ${a.desc}`).toLowerCase().includes(q));
 
-        grid.innerHTML = filtered.map((alb, idx) => {
+        const q = searchQuery.trim().toLowerCase();
+        const allAlbums = getAllAlbums();
+        const filtered = allAlbums.filter(a => !q || (`${a.title} ${a.tag} ${a.desc}`).toLowerCase().includes(q));
+        if (countEl) countEl.textContent = String(filtered.length);
+
+        grid.innerHTML = filtered.map((alb) => {
+          const realIdx = allAlbums.findIndex(item => item.id === alb.id);
           const isPinned = pinnedItems.some(p => p.id === alb.id);
+          const imgHtml = alb.image
+            ? `<img src="${alb.image}" alt="${alb.title}" loading="lazy" />`
+            : "";
           return `
             <article class="album-card">
-              <div class="album-cover" data-action="open-album" data-idx="${idx}">
-                ${getCoverSvg(alb.theme)}
+              <div class="album-cover" data-action="open-album" data-idx="${realIdx}">
+                ${getCoverSvg(alb.theme || "strata")}
+                ${imgHtml}
                 <span class="album-badge">${alb.tag}</span>
+                <span class="album-zoom-hint">🔍 Inspect</span>
               </div>
               <div class="album-body">
                 <div>
@@ -1810,9 +1931,9 @@
                   <p>${alb.desc}</p>
                 </div>
                 <div class="album-footer">
-                  <a href="${alb.url}" target="_blank" rel="noopener noreferrer" class="btn-open-sm">Open OneDrive ↗</a>
+                  <a href="${alb.url}" target="_blank" rel="noopener noreferrer" class="btn-open-sm">Open Archive ↗</a>
                   <div>
-                    <button type="button" class="icon-mini" data-action="open-album" data-idx="${idx}" title="Inspect Album">🔍</button>
+                    <button type="button" class="icon-mini" data-action="open-album" data-idx="${realIdx}" title="Lightbox View">🔍</button>
                     <button type="button" class="icon-mini" data-action="copy-text" data-copy="${alb.url}" title="Copy Album Link">⧉</button>
                     <button type="button" class="icon-mini" data-action="toggle-pin" data-id="${alb.id}" data-label="${alb.title}" data-url="${alb.url}" title="Pin Album">${isPinned ? "★" : "☆"}</button>
                   </div>
@@ -1832,36 +1953,44 @@
         return match ? match[1] : "";
       }
 
-      /* Render Geoinformatics GIS Studio */
+      /* Render Geoinformatics GIS Studio (Immediate Embedded YouTube Player) */
       function renderGisStudio() {
         const modList = document.getElementById("gisModules");
         const frame = document.getElementById("gisVideoFrame");
+        const metaBar = document.getElementById("gisVideoMeta");
         const chkBox = document.getElementById("gisChecklist");
-        if (!modList || !frame || !chkBox) return;
+        if (!modList || !frame || !chkBox || !metaBar) return;
 
         const activeMod = GIS_MODULES[activeGisIdx];
-        modList.innerHTML = GIS_MODULES.map((m, idx) => `
-          <button type="button" class="gis-mod-btn ${idx === activeGisIdx ? "active" : ""}" data-action="select-gis" data-idx="${idx}">
-            <div class="gis-mod-code">${m.code}</div>
-            <div class="gis-mod-title">${m.title}</div>
-            <div class="gis-mod-desc">${m.desc}</div>
-          </button>
-        `).join("");
+        const activeYtId = customYtMap[activeMod.id] || activeMod.defaultYtId;
+        const isCustom = Boolean(customYtMap[activeMod.id]);
 
-        if (customYtId) {
-          frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${customYtId}?rel=0" title="${activeMod.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        } else {
-          frame.innerHTML = `
-            <div class="video-placeholder">
-              <div class="sec-kicker">${activeMod.code}</div>
-              <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">${activeMod.title}</h3>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 44ch; margin-bottom: 14px;">
-                Paste your department's YouTube GIS tutorial URL or 11-character Video ID below to load it directly into this lab theater, or download ArcGIS 10.8 from the Study Vault.
-              </p>
-              <a href="https://drive.google.com/drive/folders/1SPjcG-_5u6rgCVF9Vzi8a6ZAvqUc3nkW?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-open-sm">Download ArcGIS 10.8 (Drive) ↗</a>
-            </div>
+        modList.innerHTML = GIS_MODULES.map((m, idx) => {
+          const hasCustom = Boolean(customYtMap[m.id]);
+          return `
+            <button type="button" class="gis-mod-btn ${idx === activeGisIdx ? "active" : ""}" data-action="select-gis" data-idx="${idx}">
+              <div class="gis-mod-top">
+                <span class="gis-mod-code">${m.code}</span>
+                <span class="gis-mod-pill">${hasCustom ? "Custom Video" : "▶ Ready"}</span>
+              </div>
+              <div class="gis-mod-title">${m.title}</div>
+              <div class="gis-mod-desc">${m.desc}</div>
+            </button>
           `;
-        }
+        }).join("");
+
+        frame.innerHTML = `<iframe src="https://www.youtube.com/embed/${activeYtId}?rel=0" title="${activeMod.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+
+        metaBar.innerHTML = `
+          <div>
+            <div style="font-size: 0.74rem; font-family: var(--font-mono); color: var(--emerald);">${activeMod.code} ${isCustom ? "· CUSTOM TUTORIAL BOUND" : "· LAB TUTORIAL"}</div>
+            <div style="font-weight: 800; font-size: 0.98rem;">${activeMod.title}</div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="https://www.youtube.com/watch?v=${activeYtId}" target="_blank" rel="noopener noreferrer" class="btn-open-sm">Watch on YouTube ↗</a>
+            <a href="https://drive.google.com/drive/folders/1SPjcG-_5u6rgCVF9Vzi8a6ZAvqUc3nkW?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-open-sm">ArcGIS 10.8 Drive ↗</a>
+          </div>
+        `;
 
         chkBox.innerHTML = `
           <h4>Lab Workflow Checklist — ${activeMod.code}</h4>
@@ -1930,15 +2059,18 @@
           showToast("Unpinned item");
         } else if (action === "open-album") {
           const idx = parseInt(target.getAttribute("data-idx"), 10) || 0;
-          const alb = ALBUMS[idx];
+          const alb = getAllAlbums()[idx];
           if (!alb) return;
-          document.getElementById("modalAlbumPoster").innerHTML = getCoverSvg(alb.theme);
+          const poster = document.getElementById("modalAlbumPoster");
+          poster.innerHTML = `${getCoverSvg(alb.theme || "strata")}${alb.image ? `<img src="${alb.image}" alt="${alb.title}" />` : ""}`;
           document.getElementById("modalAlbumTag").textContent = alb.tag;
           document.getElementById("modalAlbumTitle").textContent = alb.title;
           document.getElementById("modalAlbumDesc").textContent = alb.desc;
           document.getElementById("modalAlbumLink").href = alb.url;
           document.getElementById("modalAlbumCopy").setAttribute("data-copy", alb.url);
           document.getElementById("albumModal").classList.add("open");
+        } else if (action === "open-add-photo") {
+          document.getElementById("addPhotoModal").classList.add("open");
         } else if (action === "open-qr") {
           renderQrCodes();
           document.getElementById("qrModal").classList.add("open");
@@ -1954,11 +2086,45 @@
             showToast("Please enter a valid YouTube URL or 11-character Video ID.");
             return;
           }
-          customYtId = vid;
-          safeStorage.set("just_pme_yt_id", vid);
+          const activeMod = GIS_MODULES[activeGisIdx];
+          customYtMap[activeMod.id] = vid;
+          safeStorage.set("just_pme_yt_map", JSON.stringify(customYtMap));
+          if (inp) inp.value = "";
           renderGisStudio();
-          showToast("YouTube GIS Tutorial loaded!");
+          showToast(`Custom YouTube video bound to ${activeMod.code}!`);
+        } else if (action === "reset-yt") {
+          const activeMod = GIS_MODULES[activeGisIdx];
+          delete customYtMap[activeMod.id];
+          safeStorage.set("just_pme_yt_map", JSON.stringify(customYtMap));
+          renderGisStudio();
+          showToast(`Restored default tutorial for ${activeMod.code}`);
         }
+      });
+
+      /* Add Custom Photo / Album Submission */
+      document.getElementById("addPhotoForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const title = document.getElementById("newPhotoTitle").value.trim();
+        const tag = document.getElementById("newPhotoTag").value.trim() || "Departmental Photo Archive";
+        const image = document.getElementById("newPhotoImg").value.trim();
+        const url = document.getElementById("newPhotoUrl").value.trim();
+        const desc = document.getElementById("newPhotoDesc").value.trim() || "Photo collection uploaded to the JUST PME departmental gallery.";
+
+        if (!title || !url) return;
+        customAlbums.push({
+          id: "alb-custom-" + Date.now(),
+          title,
+          tag,
+          image,
+          url,
+          desc,
+          theme: "strata"
+        });
+        safeStorage.set("just_pme_custom_albums", JSON.stringify(customAlbums));
+        this.reset();
+        document.getElementById("addPhotoModal").classList.remove("open");
+        renderGallery();
+        showToast(`Added "${title}" to Gallery!`);
       });
 
       /* Track Tabs */
@@ -2010,7 +2176,7 @@
       });
 
       document.addEventListener("keydown", function (e) {
-        if (e.key === "/" && document.activeElement !== searchInput && document.activeElement.tagName !== "INPUT") {
+        if (e.key === "/" && document.activeElement !== searchInput && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
           e.preventDefault();
           searchInput.focus();
         } else if (e.key === "Escape") {
